@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="100dp"
+    android:paddingRight="16dp"
+    android:paddingLeft="16dp"
+    tools:context=".GroupInfo">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp">
+
+        <TextView
+            android:layout_width="60sp"
+            android:layout_height="wrap_content"
+            android:text="그룹명"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/gName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp">
+
+        <TextView
+            android:layout_width="60sp"
+            android:layout_height="wrap_content"
+            android:text="인원"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/gNumber"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="100dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="한 줄 소개"
+            android:textSize="18sp" />
+        <TextView
+            android:id="@+id/gText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnEnjoy"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="참여하기" />
+
+</LinearLayout>

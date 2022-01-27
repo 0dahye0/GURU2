@@ -84,10 +84,5 @@ class MainActivity : AppCompatActivity() {
             var intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
         }
-
-
-
-
-
     }
 }
