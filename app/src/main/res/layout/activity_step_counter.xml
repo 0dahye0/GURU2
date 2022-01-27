@@ -23,11 +23,11 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="4dp"
         android:text="0"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/progressBar"
         app:layout_constraintEnd_toStartOf="@+id/stepTextView"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/progressBar"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/progressBar" />
 
     <TextView
         android:id="@+id/stepTextView"
@@ -35,11 +35,11 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="4dp"
         android:text="걸음"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toBottomOf="@+id/progressBar"
         app:layout_constraintEnd_toStartOf="@+id/progressBar"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/stepsValue"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/progressBar" />
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/playFab"
