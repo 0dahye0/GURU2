@@ -2,8 +2,12 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.guru2">
 
-    <uses-feature android:name="android.hardware.Sensor.stepcounter" android:required="true" />
-    <uses-feature android:name="android.hardware.Sensor.stepdetector" android:required="true" />
+    <uses-feature
+        android:name="android.hardware.Sensor.stepcounter"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.Sensor.stepdetector"
+        android:required="true" />
 
     <application
         android:allowBackup="true"
@@ -12,7 +16,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.GURU2">
-        <activity android:name=".StepCounter"></activity>
+        <activity android:name=".InformationModiPage"></activity>
+        <activity android:name=".MyPage" />
+        <activity android:name=".StepCounter" />
         <activity android:name=".GroupInfo" />
         <activity android:name=".GroupShow" />
         <activity android:name=".GroupMaking" />
