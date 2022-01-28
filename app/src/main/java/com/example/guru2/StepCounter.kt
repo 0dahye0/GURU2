@@ -1,12 +1,14 @@
 package com.example.guru2
 
 import android.content.Context
+import android.content.Intent
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
 import android.hardware.SensorManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageButton
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
@@ -19,6 +21,9 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
     private lateinit var stepsValue: TextView
     private lateinit var playFab: FloatingActionButton
     private lateinit var stopFab: FloatingActionButton
+    private lateinit var groupBtn: ImageButton
+    private lateinit var myPageBtn: ImageButton
+
     private var currentStep = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +33,10 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
         stepsValue = findViewById(R.id.stepsValue)
         playFab = findViewById(R.id.playFab)
         stopFab = findViewById(R.id.stopFab)
+        groupBtn = findViewById(R.id.groupBtn)
+        myPageBtn = findViewById(R.id.myPageBtn)
 
+        // play(pause) 버튼 클릭 이벤트
         playFab.setOnClickListener {
             if (!running) {
                 sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
@@ -39,6 +47,7 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
             }
         }
 
+        // stop 버튼 클릭 이벤트
         stopFab.setOnClickListener {
             sensorManager?.unregisterListener(this)
             progressBar.setProgress(0, true)
@@ -46,8 +55,21 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
             currentStep = 0
             playFab.setImageResource(R.drawable.ic_baseline_play_circle_24)
         }
+
+        // 그룹 페이지로 이동
+        groupBtn.setOnClickListener {
+            var intent = Intent(this, GroupShow::class.java)
+            startActivity(intent)
+        }
+
+        // 마이 페이지로 이동
+        myPageBtn.setOnClickListener {
+            intent = Intent(this, MyPage::class.java)
+            startActivity(intent)
+        }
     }
 
+    // motion 인식 작동 함수
     override fun onResume() {
         super.onResume()
         var stepsSensor = sensorManager?.getDefaultSensor(Sensor.TYPE_STEP_COUNTER)
@@ -67,6 +89,7 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
         }
     }
 
+    // motion 인식 멈춤 함수
     override fun onPause() {
         super.onPause()
         running = false
@@ -74,6 +97,7 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
         playFab.setImageResource(R.drawable.ic_baseline_play_circle_24)
     }
 
+    // 센서 감지 함수
     override fun onSensorChanged(p0: SensorEvent?) {
         if (running) {
             progressBar.setProgress(currentStep, true)
@@ -83,6 +107,6 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
     }
 
     override fun onAccuracyChanged(p0: Sensor?, p1: Int) {
-        
+
     }
 }

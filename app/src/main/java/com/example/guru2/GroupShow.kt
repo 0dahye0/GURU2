@@ -7,6 +7,7 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
 
@@ -15,6 +16,8 @@ class GroupShow : AppCompatActivity() {
     lateinit var sqlitedb: SQLiteDatabase
     lateinit var layout: LinearLayout
     lateinit var btnMaking: Button
+    lateinit var mainBtn2: ImageButton
+    lateinit var myPageBtn2: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,6 +29,9 @@ class GroupShow : AppCompatActivity() {
         layout = findViewById(R.id.group)
 
         btnMaking = findViewById(R.id.btnMaking)
+
+        mainBtn2 = findViewById(R.id.mainBtn2)
+        myPageBtn2 = findViewById(R.id.myPageBtn2)
 
         var cursor: Cursor
         cursor = sqlitedb.rawQuery("SELECT * FROM groupDB;", null)
@@ -69,6 +75,18 @@ class GroupShow : AppCompatActivity() {
 
         btnMaking.setOnClickListener {
             val intent = Intent(this, GroupMaking::class.java)
+            startActivity(intent)
+        }
+
+        // 메인 페이지로 이동
+        mainBtn2.setOnClickListener {
+            intent = Intent(this, StepCounter::class.java)
+            startActivity(intent)
+        }
+
+        // 마이 페이지로 이동
+        myPageBtn2.setOnClickListener {
+            intent = Intent(this, MyPage::class.java)
             startActivity(intent)
         }
     }

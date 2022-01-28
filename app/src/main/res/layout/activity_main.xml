@@ -54,7 +54,7 @@
         app:layout_constraintTop_toBottomOf="@+id/imageView5" />
 
     <Button
-        android:id="@+id/LoginBtn"
+        android:id="@+id/loginBtn"
         android:layout_width="142dp"
         android:layout_height="46dp"
         android:background="@drawable/button"
@@ -67,7 +67,7 @@
         app:layout_constraintVertical_bias="0.923" />
 
     <Button
-        android:id="@+id/SignUpBtn"
+        android:id="@+id/signUpBtn"
         android:layout_width="140dp"
         android:layout_height="47dp"
         android:text="회원가입"

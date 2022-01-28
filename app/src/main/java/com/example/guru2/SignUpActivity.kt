@@ -94,7 +94,7 @@ class SignUpActivity : AppCompatActivity() {
                     sqlitedb.close()
                     Toast.makeText(applicationContext, "가입이 완료되었습니다", Toast.LENGTH_LONG).show()
                     //인텐트 로그인 홈으로 이동.
-                    var intent = Intent(this, MainActivity::class.java )
+                    var intent = Intent(this, MainActivity::class.java)
                     startActivity(intent)
                 }
             }

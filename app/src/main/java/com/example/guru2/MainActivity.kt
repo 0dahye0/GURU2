@@ -16,8 +16,8 @@ class MainActivity : AppCompatActivity() {
 
     lateinit var editTextId : EditText //아이디 editText
     lateinit var editTextPassword : EditText //패스워드 editText
-    lateinit var LoginBtn : Button //로그인 버튼
-    lateinit var SignUpBtn : Button //회원가입 버튼
+    lateinit var loginBtn : Button //로그인 버튼
+    lateinit var signUpBtn : Button //회원가입 버튼
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,17 +26,17 @@ class MainActivity : AppCompatActivity() {
         //위젯 연결
         editTextId = findViewById(R.id.editTextId)
         editTextPassword = findViewById(R.id.editTextPassword)
-        LoginBtn = findViewById(R.id.LoginBtn)
-        SignUpBtn = findViewById(R.id.SignUpBtn)
+        loginBtn = findViewById(R.id.loginBtn)
+        signUpBtn = findViewById(R.id.signUpBtn)
 
         dbManager = DBManager(this, "personnelDB", null, 1)
 
         //로그인버튼 이벤트처리
-        LoginBtn.setOnClickListener {
+        loginBtn.setOnClickListener {
             var edid = editTextId.text.toString()
             var edpwd = editTextPassword.text.toString()
-            var IdFlag = 0
-            var PwdFlag = 0
+            var idFlag = 0
+            var pwdFlag = 0
 
             //아이디 또는 패스워드를 입력하지 않았을 때
             if(edid.length == 0 || edpwd.length == 0){
@@ -55,10 +55,10 @@ class MainActivity : AppCompatActivity() {
                     dbpwd = cursor.getString(1)
 
                     if(dbid.equals(edid)){ //사용자가 editTextId 칸에 적은 아이디가 dbid와 동일한 경우
-                        IdFlag=1
+                        idFlag=1
 
                         if(dbpwd.equals(edpwd)){ //사용자가 editTextPassword칸에 적은 패스워드가 dbpwd와 동일한 경우
-                            PwdFlag=1
+                            pwdFlag=1
                             Toast.makeText(applicationContext, "로그인 성공", Toast.LENGTH_LONG).show() //아이디, 패스워드가 둘 다 일치했음으로 로그인 성공
                             var intent = Intent(this, StepCounter::class.java)
                             intent.putExtra("id", edid)
@@ -72,15 +72,21 @@ class MainActivity : AppCompatActivity() {
                 }
                 cursor.close()
                 sqlitedb.close()
-                if(IdFlag==0 && PwdFlag==0){//아이디와 패스워드 모두 불일치한 경우
+                if(idFlag==0 && pwdFlag==0){//아이디와 패스워드 모두 불일치한 경우
                     Toast.makeText(applicationContext, "아이디 또는 패스워드가 틀렸습니다.", Toast.LENGTH_LONG).show()
                 }
 
             }
         }
 
-        //회원가입버튼 이벤트처리
-        SignUpBtn.setOnClickListener { //회원가입 액티비티로 넘어감
+        //로그인 버튼 이벤트 처리
+        loginBtn.setOnClickListener {
+            var intent = Intent(this, StepCounter::class.java)
+            startActivity(intent)
+        }
+
+        //회원가입 버튼 이벤트 처리
+        signUpBtn.setOnClickListener { //회원가입 액티비티로 넘어감
             var intent = Intent(this, SignUpActivity::class.java)
             startActivity(intent)
         }
