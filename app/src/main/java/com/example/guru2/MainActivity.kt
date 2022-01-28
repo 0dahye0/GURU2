@@ -60,9 +60,9 @@ class MainActivity : AppCompatActivity() {
                         if(dbpwd.equals(edpwd)){ //사용자가 editTextPassword칸에 적은 패스워드가 dbpwd와 동일한 경우
                             PwdFlag=1
                             Toast.makeText(applicationContext, "로그인 성공", Toast.LENGTH_LONG).show() //아이디, 패스워드가 둘 다 일치했음으로 로그인 성공
-                            //var intent = Intent(this, 홈액티비티)
-                            //intent.putExtra("id", edid)
-                            //startActivity(intent)
+                            var intent = Intent(this, StepCounter::class.java)
+                            intent.putExtra("id", edid)
+                            startActivity(intent)
                         }
                         else{
                             Toast.makeText(applicationContext, "아이디 또는 패스워드가 틀렸습니다.", Toast.LENGTH_LONG).show() //아이디는 일치, 패스워드는 불일치한 경우
