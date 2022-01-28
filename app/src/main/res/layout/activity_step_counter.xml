@@ -101,6 +101,6 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/groupBtn"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/myPage_icon" />
+        app:srcCompat="@drawable/mypage_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
