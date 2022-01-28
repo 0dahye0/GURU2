@@ -16,6 +16,7 @@ class SignUpActivity : AppCompatActivity() {
 
     lateinit var SignUpId : EditText
     lateinit var SignUpNickName : EditText
+    lateinit var SignUpStepValue  :EditText
     lateinit var SignUpPassword : EditText
     lateinit var SignUpPasswordCheck : EditText
     lateinit var SignUpIdCheckBtn : Button
@@ -30,6 +31,7 @@ class SignUpActivity : AppCompatActivity() {
 
         SignUpId = findViewById(R.id.SingUpId)
         SignUpNickName = findViewById(R.id.SignUpNickName)
+        SignUpStepValue = findViewById(R.id.SignUpStepValue)
         SignUpPassword = findViewById(R.id.SignUpPassword)
         SignUpPasswordCheck = findViewById(R.id.SignUpPasswordCheck)
         SignUpIdCheckBtn = findViewById(R.id.SignUpIdCheckBtn)
@@ -77,12 +79,13 @@ class SignUpActivity : AppCompatActivity() {
         SignUpFinishBtn.setOnClickListener {
             var sid = SignUpId.text.toString()
             var snickname = SignUpNickName.text.toString()
+            var sstepvalue = SignUpStepValue.text.toString()
             var spwd = SignUpPassword.text.toString()
             var spwdcheck = SignUpPasswordCheck.text.toString()
 
             //아이디, 패스워드, 닉네임 빈칸일 때
-            if(sid.length==0 || snickname.length==0 || spwd.length==0 || spwdcheck.length==0){
-                Toast.makeText(applicationContext, "아이디와 닉네임, 패스워드는는 필수 입력사항입니다.", Toast.LENGTH_SHORT).show()
+            if(sid.length==0 || snickname.length==0 || sstepvalue.length==0 ||spwd.length==0 || spwdcheck.length==0){
+                Toast.makeText(applicationContext, "아이디와 닉네임, 목표 걸음 수와 패스워드는 필수 입력사항입니다.", Toast.LENGTH_SHORT).show()
             }
             else{
                 if(!spwd.equals(spwdcheck)){
