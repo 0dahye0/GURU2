@@ -59,7 +59,8 @@ class InformationModiPage : AppCompatActivity()  {
             else{
                 Toast.makeText(applicationContext, "사용가능한 닉네임입니다.", Toast.LENGTH_SHORT).show()
                 sqlitedb = dbManager.writableDatabase
-                sqlitedb.execSQL("UPDATE personnel SET nickname = "+newNickName.text+" WHERE id = '" + id + "';")//계속 오류 발생
+                sql = "UPDATE personnel SET nickname='"+ newNickName.text+"' WHERE id =" +id
+                sqlitedb.execSQL(sql)//계속 오류 발생
                 sqlitedb.close()
             }
         }
