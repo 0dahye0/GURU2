@@ -35,16 +35,17 @@ class MyPage : AppCompatActivity() {
 
         dbManager = DBManager(this, "personnelDB", null, 1)
 
-        var id=""
-        var nickNa=""
-        var walk:String
-        var team:String
+        var id = ""
+        var nickNa = ""
+        var walk: String
+        var team: String
 
         sqlitedb = dbManager.readableDatabase
         var cursor: Cursor
-        cursor = sqlitedb.rawQuery("SELECT id, nickname FROM personnel", null)//디비에서 해당 로그인 아이디,닉네임 가져오기
+        cursor = sqlitedb.rawQuery("SELECT id, nickname FROM personnel", null) // 디비에서 해당 로그인 아이디,닉네임 가져오기
 
-        while(cursor.moveToNext()){
+        // 마이페이지에서 닉네임, 아이디 안 뜨는 거 수정해야 할 것 같아요!!
+        while (cursor.moveToNext()) {
             id = cursor.getString(0) //id
             nickNa = cursor.getString(1) //nickname
         }
@@ -70,7 +71,7 @@ class MyPage : AppCompatActivity() {
         //로그아웃버튼 누르면 로그아웃
         logout.setOnClickListener {
             var intent = Intent(this, MainActivity::class.java)
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
             startActivity(intent)
         }
 
@@ -80,7 +81,7 @@ class MyPage : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         if(resultCode == RESULT_OK){
             var nick = data?.getStringExtra("nick")
-            personNickName.setText(nick)
+            personNickName.text = nick
             Toast.makeText(applicationContext, "수정이 완료되었습니다.", Toast.LENGTH_SHORT).show()
         }
         super.onActivityResult(requestCode, resultCode, data)

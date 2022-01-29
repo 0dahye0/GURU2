@@ -22,7 +22,7 @@ class GroupInfo : AppCompatActivity() {
 
     lateinit var str_gName: String
     var gNumber: Int = 0
-    var gCount: Int = 0
+    var gCount: Int = 1
     lateinit var str_gText: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,6 +33,8 @@ class GroupInfo : AppCompatActivity() {
         tvNumber = findViewById(R.id.gNumber)
         tvText = findViewById(R.id.gText)
         btnEnjoy = findViewById(R.id.btnEnjoy)
+
+        var id: String = intent.getStringExtra("userId").toString()
 
         var myHelper: myDBHelper = myDBHelper(this)
 
@@ -62,20 +64,19 @@ class GroupInfo : AppCompatActivity() {
         btnEnjoy.setOnClickListener {
             sqlitedb = myHelper.writableDatabase
             // 멤버 업데이트
-            // edtUser.text.toString() 대신에 personnel에서 아이디 가져오기
-            //sqlitedb.execSQL("UPDATE groupDB SET gMember${gCount+1} = '" + 사용자 아이디 가져오기 + "' WHERE gName ='" + str_gName + "';")
+            sqlitedb.execSQL("UPDATE groupDB SET gMember${gCount+1} = '" + id + "' WHERE gName ='" + str_gName + "';")
             gCount++
             // 현재 인원수 업데이트
             sqlitedb.execSQL("UPDATE groupDB SET gCount = " + gCount.toString() + " WHERE gName = '" + str_gName + "';")
             sqlitedb.close()
-            Toast.makeText(applicationContext, "${gCount}등으로 참여 완료!", Toast.LENGTH_SHORT).show()
+            Toast.makeText(applicationContext, "참여 완료!", Toast.LENGTH_SHORT).show()
         }
     }
 
-    inner class myDBHelper(context: Context) : SQLiteOpenHelper(context, "groupTBL", null, 1) {
+    inner class myDBHelper(context: Context) : SQLiteOpenHelper(context, "groupDB", null, 1) {
         // 테이블 생성
         override fun onCreate(db: SQLiteDatabase?) {
-            db!!.execSQL("CREATE TABLE groupDB (gName CHAR(20) PRIMARY KEY, gNumber INTEGER, gText String, gCount INTEGER, gMember1 String, gMember2 String, gMember3 String, gMember4 String);")
+            db!!.execSQL("CREATE TABLE groupDB (gName String, gNumber INTEGER, gText String, gCount INTEGER, gMember1 String, gMember2 String, gMember3 String, gMember4 String);")
         }
 
         // 테이블 삭제 후 다시 생성

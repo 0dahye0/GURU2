@@ -36,6 +36,9 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
         groupBtn = findViewById(R.id.groupBtn)
         myPageBtn = findViewById(R.id.myPageBtn)
 
+        // 사용자 아이디 가져오기
+        var id: String = intent.getStringExtra("userId").toString()
+
         // play(pause) 버튼 클릭 이벤트
         playFab.setOnClickListener {
             if (!running) {
@@ -58,13 +61,15 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
 
         // 그룹 페이지로 이동
         groupBtn.setOnClickListener {
-            var intent = Intent(this, GroupShow::class.java)
+            val intent = Intent(this, GroupShow::class.java)
+            // 사용자 아이디 데이터
+            intent.putExtra("userId", id)
             startActivity(intent)
         }
 
         // 마이 페이지로 이동
         myPageBtn.setOnClickListener {
-            intent = Intent(this, MyPage::class.java)
+            val intent = Intent(this, MyPage::class.java)
             startActivity(intent)
         }
     }

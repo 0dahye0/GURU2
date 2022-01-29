@@ -82,6 +82,8 @@ class MainActivity : AppCompatActivity() {
         //로그인 버튼 이벤트 처리
         loginBtn.setOnClickListener {
             var intent = Intent(this, StepCounter::class.java)
+            // 사용자 아이디 넘기기
+            intent.putExtra("userId", editTextId.text.toString())
             startActivity(intent)
         }
 
