@@ -50,7 +50,7 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
         // stop 버튼 클릭 이벤트
         stopFab.setOnClickListener {
             sensorManager?.unregisterListener(this)
-            // progressBar.setProgress(0, true)
+            progressBar.setProgress(0, true)
             stepsValue.text = "0"
             currentStep = 0
             playFab.setImageResource(R.drawable.ic_baseline_play_circle_24)
@@ -100,7 +100,7 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
     // 센서 감지 함수
     override fun onSensorChanged(p0: SensorEvent?) {
         if (running) {
-            // progressBar.setProgress(currentStep, false)
+            progressBar.setProgress(currentStep, true)
             stepsValue.text = currentStep.toString()
             currentStep++
         }
