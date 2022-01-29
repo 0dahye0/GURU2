@@ -61,15 +61,13 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
 
         // 그룹 페이지로 이동
         groupBtn.setOnClickListener {
-            val intent = Intent(this, GroupShow::class.java)
-            // 사용자 아이디 데이터
-            intent.putExtra("userId", id)
+            var intent = Intent(this, GroupShow::class.java)
             startActivity(intent)
         }
 
         // 마이 페이지로 이동
         myPageBtn.setOnClickListener {
-            val intent = Intent(this, MyPage::class.java)
+            intent = Intent(this, MyPage::class.java)
             startActivity(intent)
         }
     }
