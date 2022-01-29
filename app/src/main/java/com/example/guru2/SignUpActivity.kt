@@ -63,7 +63,6 @@ class SignUpActivity : AppCompatActivity() {
             var snickname = SignUpNickName.text.toString()
 
             sqlitedb = dbManager.readableDatabase
-
             var cursor : Cursor
             sql = "SELECT nickname FROM personnel WHERE nickname='"+snickname+"'"
             cursor = sqlitedb.rawQuery(sql, null)
@@ -80,8 +79,8 @@ class SignUpActivity : AppCompatActivity() {
             var sid = SignUpId.text.toString()
             var snickname = SignUpNickName.text.toString()
             var sstepvalue = SignUpStepValue.text.toString()
-            var spwd = SignUpPassword.text.toString()
-            var spwdcheck = SignUpPasswordCheck.text.toString()
+            var spwd = SignUpPassword.text.toString() //패스워드
+            var spwdcheck = SignUpPasswordCheck.text.toString() //패스워드 확인
 
             //아이디, 패스워드, 닉네임 빈칸일 때
             if(sid.length==0 || snickname.length==0 || sstepvalue.length==0 ||spwd.length==0 || spwdcheck.length==0){

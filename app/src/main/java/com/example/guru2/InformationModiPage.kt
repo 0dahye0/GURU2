@@ -15,13 +15,13 @@ class InformationModiPage : AppCompatActivity()  {
     lateinit var dbManager:DBManager
     lateinit var sqlitedb: SQLiteDatabase
 
-    lateinit var originalNickName : TextView
-    lateinit var newNickName : EditText
-    lateinit var newNickNameCheckBtn : Button
-    lateinit var orginalPassWord : EditText
-    lateinit var newPassWord : EditText
-    lateinit var newPassWordCheck : EditText
-    lateinit var ModiBtn : Button
+    lateinit var originalNickName : TextView //기존 닉네임
+    lateinit var newNickName : EditText //변경할 닉네임
+    lateinit var newNickNameCheckBtn : Button //닉네임 중복 확인 버튼
+    lateinit var orginalPassWord : EditText //기존 패스워드
+    lateinit var newPassWord : EditText //새로운 패스워드
+    lateinit var newPassWordCheck : EditText //새로운 패스워드 재확인
+    lateinit var ModiBtn : Button //수정하기 버튼
     lateinit var sql:String
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -68,23 +68,24 @@ class InformationModiPage : AppCompatActivity()  {
 
         //수정하기버튼->대화상자 경고문... 현재 비밀번호가 틀린 경우와, 새 비밀번호와 새 비밀번호 확인이 다른 경우우
         ModiBtn.setOnClickListener {
-            var oripwd = orginalPassWord.text.toString()
-            var newpwd = newPassWord.text.toString()
-            var newpwdch = newPassWordCheck.text.toString()
+            var oripwd = orginalPassWord.text.toString() //기존패스워드
+            var newpwd = newPassWord.text.toString() //새로운 패스워드
+            var newpwdch = newPassWordCheck.text.toString() //새로운 패스워드 확인
             var pwdFlag1 = 0
             var pwdFlag2 = 0
             var dbpwd=""
 
             sqlitedb = dbManager.readableDatabase
             var cursor: Cursor
-            sql = "SELECT pwd FROM personnel WHERE id='"+id+"'" //id에 저장된 password를 가져온다
+            sql = "SELECT pwd FROM personnel WHERE id='"+id+"'"//id에 저장된 password를 가져온다
             cursor = sqlitedb.rawQuery(sql, null)
             while(cursor.moveToNext()){
                 dbpwd = cursor.getString(0)
             }
+            Toast.makeText(applicationContext, "비밀번호는"+dbpwd, Toast.LENGTH_LONG).show()
 
             if(!oripwd.equals(dbpwd)){//비밀번호가 동일하지 않으면 -> pwdFlage=0 으로 고정
-                Toast.makeText(applicationContext, "기존 비밀번호가 틀렸습니다.", Toast.LENGTH_LONG).show()
+                //Toast.makeText(applicationContext, "기존 비밀번호가 틀렸습니다.", Toast.LENGTH_LONG).show()
             }
             else{//기존 비밀번호 동일
                 pwdFlag1=1
@@ -97,7 +98,8 @@ class InformationModiPage : AppCompatActivity()  {
 
                     if(pwdFlag1==1&&pwdFlag2==1){
                         sqlitedb = dbManager.writableDatabase
-                        sqlitedb.execSQL("UPDATE personnel SET pwd = "+newPassWord.text+"WHERE id = '" + id +"';")
+                        sql = "UPDATE personnel SET pwd ='"+ newPassWord.text+"' WHERE id ="+ id
+                        sqlitedb.execSQL(sql)
                         sqlitedb.close()
 
                         var intent = Intent(this, MyPage::class.java)
