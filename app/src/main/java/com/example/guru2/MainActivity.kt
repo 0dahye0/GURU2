@@ -42,7 +42,7 @@ class MainActivity : AppCompatActivity() {
             if(edid.length == 0 || edpwd.length == 0){
                 Toast.makeText(applicationContext, "아이디와 패스워드는 필수 입력사항입니다.", Toast.LENGTH_LONG).show()
             }
-            else{//아이디와 패스워드를 모두 입력했을 때
+            else{ //아이디와 패스워드를 모두 입력했을 때
                 var dbid : String //db에서 받아온 id
                 var dbpwd : String //db에서 받아온 pwd
 
@@ -59,10 +59,15 @@ class MainActivity : AppCompatActivity() {
 
                         if(dbpwd.equals(edpwd)){ //사용자가 editTextPassword칸에 적은 패스워드가 dbpwd와 동일한 경우
                             pwdFlag=1
-                            Toast.makeText(applicationContext, "로그인 성공", Toast.LENGTH_LONG).show() //아이디, 패스워드가 둘 다 일치했음으로 로그인 성공
-                            var intent = Intent(this, StepCounter::class.java)
-                            intent.putExtra("id", edid)
-                            startActivity(intent)
+
+                            //로그인 버튼 이벤트 처리
+                            loginBtn.setOnClickListener {
+                                Toast.makeText(applicationContext, "로그인 성공", Toast.LENGTH_SHORT).show() // 아이디, 패스워드가 둘 다 일치했음으로 로그인 성공
+                                var intent = Intent(this, StepCounter::class.java)
+                                // 사용자 아이디 넘기기
+                                intent.putExtra("userId", edid)
+                                startActivity(intent)
+                            }
                         }
                         else{
                             Toast.makeText(applicationContext, "아이디 또는 패스워드가 틀렸습니다.", Toast.LENGTH_LONG).show() //아이디는 일치, 패스워드는 불일치한 경우
@@ -72,19 +77,11 @@ class MainActivity : AppCompatActivity() {
                 }
                 cursor.close()
                 sqlitedb.close()
-                if(idFlag==0 && pwdFlag==0){//아이디와 패스워드 모두 불일치한 경우
+                if(idFlag==0 && pwdFlag==0){ //아이디와 패스워드 모두 불일치한 경우
                     Toast.makeText(applicationContext, "아이디 또는 패스워드가 틀렸습니다.", Toast.LENGTH_LONG).show()
                 }
 
             }
-        }
-
-        //로그인 버튼 이벤트 처리
-        loginBtn.setOnClickListener {
-            var intent = Intent(this, StepCounter::class.java)
-            // 사용자 아이디 넘기기
-            intent.putExtra("userId", editTextId.text.toString())
-            startActivity(intent)
         }
 
         //회원가입 버튼 이벤트 처리
