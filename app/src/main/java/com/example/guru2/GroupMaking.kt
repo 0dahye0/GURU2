@@ -28,7 +28,7 @@ class GroupMaking : AppCompatActivity() {
         edtTextBox = findViewById(R.id.edtTextBox)
         btnOk = findViewById(R.id.btnOk)
 
-        // 사용자 아이디 가져오기
+        // 사용자 아이디 가져오기 (null로 나온다. 수정해야 함)
         var id: String = intent.getStringExtra("userId").toString()
 
         myHelper = myDBHelper(this)
@@ -40,7 +40,7 @@ class GroupMaking : AppCompatActivity() {
                 sqlDB.execSQL("INSERT INTO groupDB VALUES ('" + edtName.text.toString() + "', " +
                         edtNumber.text.toString() + ", '" + edtTextBox.text.toString() + "', " + 1.toString() + ", ' ', ' ', ' ', ' ');")
                 // 만든 사람 그룹 멤버로 추가하기
-                sqlDB.execSQL("UPDATE groupDB SET gMember1 = " + id + " WHERE gName = '" + edtName.text.toString() + "';")
+                sqlDB.execSQL("UPDATE groupDB SET gMember1 = '" + id + "' WHERE gName = '" + edtName.text.toString() + "';")
                 sqlDB.close()
                 Toast.makeText(applicationContext, "${edtName.text} 그룹이 생성되었습니다!", Toast.LENGTH_SHORT).show()
                 

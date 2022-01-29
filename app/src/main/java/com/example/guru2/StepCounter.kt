@@ -62,6 +62,7 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
         // 그룹 페이지로 이동
         groupBtn.setOnClickListener {
             var intent = Intent(this, GroupShow::class.java)
+            intent.putExtra("userId", id)
             startActivity(intent)
         }
 
