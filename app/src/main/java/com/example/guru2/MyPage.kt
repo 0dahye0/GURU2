@@ -50,7 +50,6 @@ class MyPage : AppCompatActivity() {
         var cursor: Cursor
         cursor = sqlitedb.rawQuery("SELECT id, nickname FROM personnel", null) // 디비에서 해당 로그인 아이디,닉네임 가져오기
 
-        // 마이페이지에서 닉네임, 아이디 안 뜨는 거 수정해야 할 것 같아요!!
         while (cursor.moveToNext()) {
             id = cursor.getString(0) //id
             nickNa = cursor.getString(1) //nickname

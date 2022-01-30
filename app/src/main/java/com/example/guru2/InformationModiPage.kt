@@ -77,9 +77,9 @@ class InformationModiPage : AppCompatActivity()  {
                 Toast.makeText(applicationContext, "새로운 비밀번호 확인을 다시 해주세요.", Toast.LENGTH_SHORT).show()
             }
             else{//기존 비밀번호, 새로운 비밀번호 동일
-
                 sqlitedb = dbManager.writableDatabase
                 sqlitedb.execSQL("UPDATE personnel SET pwd = '" + newPassWord.text +"' WHERE id = '" + id +"';")
+                Toast.makeText(applicationContext, "수정완료", Toast.LENGTH_SHORT).show()
 
             }
         }
