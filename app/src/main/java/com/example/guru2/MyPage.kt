@@ -32,6 +32,12 @@ class MyPage : AppCompatActivity() {
         informationmodiBtn = findViewById(R.id.informationmodiBtn)
         logout = findViewById(R.id.logout)
 
+        //새로운 닉네임 받는다면
+        var newnickname = intent.getStringExtra("nick")
+        if(newnickname != null){
+            personNickName.setText(newnickname)
+        }
+
 
         dbManager = DBManager(this, "personnelDB", null, 1)
 
@@ -59,13 +65,11 @@ class MyPage : AppCompatActivity() {
 
         //개인정보수정버튼 누르면 페이지 이동
         informationmodiBtn.setOnClickListener {
-            var intent1 = Intent(this, InformationModiPage::class.java)
-            intent1.putExtra("id", personId.text.toString()) //인텐트로 id를 정보수정페이지로 넘김
-            startActivity(intent1)
 
-            var intent2 = Intent(this, InformationModiPage::class.java)
-            intent2.putExtra("nick", personNickName.text.toString())
-            startActivityForResult(intent2,0)
+            var intent = Intent(this, InformationModiPage::class.java)
+            intent.putExtra("id", personId.text.toString()) //인텐트로 id를 정보수정페이지로 넘김
+            intent.putExtra("nick", personNickName.text.toString())
+            startActivity(intent)
         }
 
         //로그아웃버튼 누르면 로그아웃
@@ -75,16 +79,6 @@ class MyPage : AppCompatActivity() {
             startActivity(intent)
         }
 
-    }
-
-    @Override
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        if(resultCode == RESULT_OK){
-            var nick = data?.getStringExtra("nick")
-            personNickName.text = nick
-            Toast.makeText(applicationContext, "수정이 완료되었습니다.", Toast.LENGTH_SHORT).show()
-        }
-        super.onActivityResult(requestCode, resultCode, data)
     }
 
 }
