@@ -92,7 +92,7 @@ class SignUpActivity : AppCompatActivity() {
                 }
                 else{
                     sqlitedb = dbManager.writableDatabase
-                    sqlitedb.execSQL("INSERT INTO personnel VALUES ('"+ sid +"','"+spwd+"', '"+ snickname +"');")//아이디, 비번, 닉네임
+                    sqlitedb.execSQL("INSERT INTO personnel VALUES ('"+ sid +"','"+spwd+"', '"+ snickname +"', '"+sstepvalue+"');")//아이디, 비번, 닉네임
                     sqlitedb.close()
                     Toast.makeText(applicationContext, "가입이 완료되었습니다", Toast.LENGTH_LONG).show()
                     //인텐트 로그인 홈으로 이동.
