@@ -140,4 +140,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/informationmodiBtn" />
 
+    <ImageView
+        android:id="@+id/MyImage"
+        android:layout_width="149dp"
+        android:layout_height="142dp"
+        android:layout_marginStart="131dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="131dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MyPageTitle"
+        app:srcCompat="@drawable/ic_baseline_person_24" />
+
+    <Button
+        android:id="@+id/MyImageChangeBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="135dp"
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="136dp"
+        android:text="프로필 사진 변경"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MyImage" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

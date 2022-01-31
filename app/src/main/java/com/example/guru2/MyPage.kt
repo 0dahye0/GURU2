@@ -1,30 +1,40 @@
 package com.example.guru2
 
+import android.app.Activity
 import android.content.Intent
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.net.Uri
 import android.os.Bundle
+import android.provider.MediaStore
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import java.lang.Exception
 
 class MyPage : AppCompatActivity() {
 
     lateinit var dbManager:DBManager
     lateinit var sqlitedb: SQLiteDatabase
 
+    lateinit var MyImage : ImageView
+    lateinit var MYImageChangeBtn : Button
     lateinit var personId : TextView
     lateinit var personNickName : TextView
     lateinit var personWalk : TextView
     lateinit var personTeam : TextView
     lateinit var informationmodiBtn : Button
     lateinit var logout : Button
+    private val GALLERY = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_my_page)
 
+        MyImage = findViewById(R.id.MyImage)
+        MYImageChangeBtn = findViewById(R.id.MyImageChangeBtn)
         personId = findViewById(R.id.personId)
         personNickName = findViewById(R.id.personNickName)
         personWalk = findViewById(R.id.personWalk)
@@ -45,6 +55,12 @@ class MyPage : AppCompatActivity() {
         var nickNa = ""
         var walk: String
         var team: String
+
+        MYImageChangeBtn.setOnClickListener {
+            val intent:Intent = Intent(Intent.ACTION_GET_CONTENT)
+            intent.setType("image/*")
+            startActivityForResult(intent, GALLERY)
+        }
 
         sqlitedb = dbManager.readableDatabase
         var cursor: Cursor
@@ -78,6 +94,25 @@ class MyPage : AppCompatActivity() {
             startActivity(intent)
         }
 
+    }
+
+    @Override
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        if(resultCode== Activity.RESULT_OK){
+            if(requestCode==GALLERY){
+                var ImnageData: Uri? = data?.data
+                //Toast.makeText(this, ImnageData.toString(), Toast.LENGTH_SHORT).show()
+                try{
+                    val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, ImnageData)
+                    MyImage.setImageBitmap(bitmap)
+                }
+                catch (e: Exception){
+                    e.printStackTrace()
+                }
+            }
+        }
     }
 
 }
