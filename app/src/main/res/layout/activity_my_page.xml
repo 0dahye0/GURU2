@@ -6,17 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".MyPage">
 
+    <ImageView
+        android:id="@+id/underline"
+        android:layout_width="122dp"
+        android:layout_height="17dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/MyPageTitle"
+        app:srcCompat="@drawable/underline" />
+
     <TextView
         android:id="@+id/MyPageTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="16dp"
         android:text="마이페이지"
-        android:textSize="24sp"
+        android:textColor="#3C3C3C"
+        android:textSize="22sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -24,11 +37,12 @@
         android:id="@+id/MyPageid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="44dp"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="298dp"
-        android:layout_marginEnd="46dp"
         android:layout_marginBottom="32dp"
         android:text="아이디"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/nickname"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,9 +51,11 @@
         android:id="@+id/nickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
-        android:layout_marginTop="29dp"
+        android:layout_marginStart="48dp"
+        android:layout_marginTop="28dp"
         android:text="닉네임"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MyPageid" />
 
@@ -47,10 +63,12 @@
         android:id="@+id/walk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="28dp"
         android:layout_marginBottom="24dp"
         android:text="총 걸음수"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/team"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nickname" />
@@ -59,9 +77,11 @@
         android:id="@+id/team"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="45dp"
+        android:layout_marginStart="48dp"
         android:layout_marginTop="28dp"
         android:text="소속 팀"
+        android:textSize="16sp"
+        android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/walk" />
 
@@ -71,9 +91,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="127dp"
         android:layout_marginEnd="142dp"
-        android:layout_marginBottom="29dp"
+        android:layout_marginBottom="340dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/personNickName"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/MyPageid" />
@@ -84,11 +105,12 @@
         android:layout_height="19dp"
         android:layout_marginStart="127dp"
         android:layout_marginEnd="142dp"
-        android:layout_marginBottom="29dp"
+        android:layout_marginBottom="292dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/personWalk"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.062"
         app:layout_constraintStart_toEndOf="@+id/nickname" />
 
     <TextView
@@ -97,11 +119,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="111dp"
         android:layout_marginEnd="142dp"
-        android:layout_marginBottom="28dp"
+        android:layout_marginBottom="240dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/personTeam"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.166"
         app:layout_constraintStart_toEndOf="@+id/walk" />
 
     <TextView
@@ -110,10 +133,12 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="124dp"
         android:layout_marginEnd="142dp"
-        android:layout_marginBottom="12dp"
+        android:layout_marginBottom="188dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/informationmodiBtn"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.062"
         app:layout_constraintStart_toEndOf="@+id/team" />
 
     <Button
@@ -121,11 +146,15 @@
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="40dp"
         android:layout_marginEnd="32dp"
+        android:backgroundTint="#8EC9A4"
         android:text="개인정보수정"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="11sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/team" />
 
@@ -135,19 +164,24 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
+        android:backgroundTint="#8EC9A4"
         android:text="로그아웃"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        app:cornerRadius="11sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/informationmodiBtn" />
 
     <ImageView
         android:id="@+id/MyImage"
-        android:layout_width="149dp"
-        android:layout_height="142dp"
+        android:layout_width="136dp"
+        android:layout_height="125dp"
         android:layout_marginStart="131dp"
-        android:layout_marginTop="13dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="131dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.461"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MyPageTitle"
         app:srcCompat="@drawable/ic_baseline_person_24" />
@@ -160,8 +194,33 @@
         android:layout_marginTop="1dp"
         android:layout_marginEnd="136dp"
         android:text="프로필 사진 변경"
+        android:textColor="#4C4C4C"
+        android:textStyle="bold"
+        app:cornerRadius="10sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/MyImage" />
+
+    <ImageView
+        android:id="@+id/background2"
+        android:layout_width="539dp"
+        android:layout_height="456dp"
+        android:layout_marginTop="116dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MyImageChangeBtn"
+        app:srcCompat="@drawable/background2" />
+
+    <ImageView
+        android:id="@+id/background"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="140dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/MyImageChangeBtn"
+        app:srcCompat="@drawable/background1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
