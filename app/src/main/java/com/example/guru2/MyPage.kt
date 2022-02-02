@@ -56,6 +56,7 @@ class MyPage : AppCompatActivity() {
         var walk: String
         var team: String
 
+        //프로필 사진 변경버튼
         MYImageChangeBtn.setOnClickListener {
             val intent:Intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.setType("image/*")
