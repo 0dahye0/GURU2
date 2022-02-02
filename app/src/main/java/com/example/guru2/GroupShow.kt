@@ -10,12 +10,13 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class GroupShow : AppCompatActivity() {
     lateinit var gDbManager: gDBManager
     lateinit var sqlitedb: SQLiteDatabase
     lateinit var layout: LinearLayout
-    lateinit var btnMaking: Button
+    lateinit var btnMaking: FloatingActionButton
     lateinit var mainBtn2: ImageButton
     lateinit var myPageBtn2: ImageButton
 
@@ -32,6 +33,9 @@ class GroupShow : AppCompatActivity() {
 
         mainBtn2 = findViewById(R.id.mainBtn2)
         myPageBtn2 = findViewById(R.id.myPageBtn2)
+
+        // 사용자 아이디 가져오기
+        var id: String = intent.getStringExtra("userId").toString()
 
         var cursor: Cursor
         cursor = sqlitedb.rawQuery("SELECT * FROM groupDB;", null)
@@ -62,6 +66,9 @@ class GroupShow : AppCompatActivity() {
             // 줄 클릭했을 때
             layout_item.setOnClickListener {
                 val intent = Intent(this, GroupInfo::class.java)
+                // 사용자 아이디 데이터 보내기
+                intent.putExtra("userId", id)
+                // 그룹 이름 보내기
                 intent.putExtra("intent_name", str_gName)
                 startActivity(intent)
             }
@@ -73,20 +80,23 @@ class GroupShow : AppCompatActivity() {
         sqlitedb.close()
         gDbManager.close()
 
+        // 그룹 생성 페이지로 이동
         btnMaking.setOnClickListener {
             val intent = Intent(this, GroupMaking::class.java)
+            // 사용자 아이디 데이터
+            //intent.putExtra("userId", id)
             startActivity(intent)
         }
 
         // 메인 페이지로 이동
         mainBtn2.setOnClickListener {
-            intent = Intent(this, StepCounter::class.java)
+            val intent = Intent(this, StepCounter::class.java)
             startActivity(intent)
         }
 
         // 마이 페이지로 이동
         myPageBtn2.setOnClickListener {
-            intent = Intent(this, MyPage::class.java)
+            val intent = Intent(this, MyPage::class.java)
             startActivity(intent)
         }
     }

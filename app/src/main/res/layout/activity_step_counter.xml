@@ -11,6 +11,11 @@
         style="?android:attr/progressBarStyle"
         android:layout_width="220dp"
         android:layout_height="220dp"
+        android:indeterminateOnly="false"
+        android:max="10000"
+        android:progress="0"
+        android:progressDrawable="@drawable/circle_progressbar"
+        android:rotation="-90"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -73,6 +78,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="#FFFFFF"
+        android:tint="#656565"
         app:layout_constraintEnd_toStartOf="@+id/groupBtn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,6 +91,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="#FFFFFF"
+        android:tint="#656565"
         app:layout_constraintEnd_toStartOf="@+id/myPageBtn"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/mainBtn"
@@ -97,10 +104,11 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="#FFFFFF"
+        android:tint="#656565"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toEndOf="@+id/groupBtn"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/myPage_icon" />
+        app:srcCompat="@drawable/mypage_icon" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

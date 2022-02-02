@@ -166,6 +166,7 @@
         android:id="@+id/SignUpStepValue"
         android:layout_width="230dp"
         android:layout_height="33dp"
+        android:layout_marginStart="10dp"
         android:background="@drawable/textbox"
         android:ems="10"
         android:inputType="textPersonName"
