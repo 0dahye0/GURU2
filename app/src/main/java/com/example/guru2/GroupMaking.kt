@@ -26,12 +26,13 @@ class GroupMaking : AppCompatActivity() {
 
     lateinit var name: String
     lateinit var id: String
-    var available: Boolean = false
+    var available: Boolean = false // 중복 확인 위한 변수
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_group_making)
 
+        // 변수 id와 연결
         edtName = findViewById(R.id.edtName)
         edtNumber = findViewById(R.id.edtNumber)
         edtStep = findViewById(R.id.edtStep)
@@ -46,20 +47,21 @@ class GroupMaking : AppCompatActivity() {
 
         // 그룹명 중복확인
         btnGname.setOnClickListener {
-            var gName = edtName.text.toString()
+            var gName = edtName.text.toString() // 그룹명
 
-            sqlgDB = myHelper.readableDatabase
+            sqlgDB = myHelper.readableDatabase // 읽기 전용
 
             var cursor : Cursor
             name = "SELECT gName FROM groupDB WHERE gName = '" + gName + "'"
             cursor = sqlgDB.rawQuery(name, null)
 
+            // 해당 이름이 데이터 테이블에 있는지 확인
             if(cursor.getCount() != 0){
-                available = false
+                available = false // 사용 불가능 (중복)
                 Toast.makeText(applicationContext, "존재하는 그룹명입니다!", Toast.LENGTH_SHORT).show()
             }
             else {
-                available = true
+                available = true // 사용 가능
                 Toast.makeText(applicationContext, "사용 가능한 그룹명입니다!", Toast.LENGTH_SHORT).show()
             }
         }
@@ -78,13 +80,17 @@ class GroupMaking : AppCompatActivity() {
                 cursor = sqlDB.rawQuery("SELECT id FROM personnel", null) // 디비에서 해당 로그인 아이디 가져오기
 
                 while (cursor.moveToNext()) {
-                    id = cursor.getString(0) // id
+                    id = cursor.getString(0) // id 가져오기
                 }
-                // gMember1로 생성 아이디 추가하기
+
+                // gMember1로 그룹을 생성한 아이디 추가하기
                 sqlgDB.execSQL("UPDATE groupDB SET gMember1 = '" + id + "' WHERE gName = '" + edtName.text.toString() + "';")
+
                 cursor.close()
                 sqlDB.close()
                 sqlgDB.close()
+
+                // 그룹 생성됨 메시지
                 Toast.makeText(applicationContext, "${edtName.text} 그룹이 생성되었습니다!", Toast.LENGTH_SHORT).show()
 
 
@@ -104,6 +110,7 @@ class GroupMaking : AppCompatActivity() {
         }
     }
 
+    // groupDB
     inner class myDBHelper(context: Context) : SQLiteOpenHelper(context, "groupDB", null, 1) {
         // 테이블 생성
         override fun onCreate(db: SQLiteDatabase?) {
@@ -117,6 +124,7 @@ class GroupMaking : AppCompatActivity() {
         }
     }
 
+    // personnelDB
     inner class myDBHelper2(context: Context) : SQLiteOpenHelper(context, "personnelDB", null, 1) {
         override fun onCreate(db: SQLiteDatabase?) {
             db!!.execSQL("CREATE TABLE personnel (id text, pwd text, nickname text)")

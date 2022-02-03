@@ -13,7 +13,7 @@ import android.widget.TextView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class GroupShow : AppCompatActivity() {
-    lateinit var gDbManager: gDBManager
+    lateinit var gDBManager: gDBManager
     lateinit var sqlitedb: SQLiteDatabase
     lateinit var layout: LinearLayout
     lateinit var btnMaking: FloatingActionButton
@@ -24,8 +24,8 @@ class GroupShow : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_group_show)
 
-        gDbManager = gDBManager(this, "groupDB", null, 1)
-        sqlitedb = gDbManager.readableDatabase
+        gDBManager = gDBManager(this, "groupDB", null, 1)
+        sqlitedb = gDBManager.readableDatabase // 읽기 전용
 
         layout = findViewById(R.id.group)
 
@@ -35,16 +35,17 @@ class GroupShow : AppCompatActivity() {
         myPageBtn2 = findViewById(R.id.myPageBtn2)
 
         var cursor: Cursor
+        // groupDB 테이블 정보 모두 가져오기
         cursor = sqlitedb.rawQuery("SELECT * FROM groupDB;", null)
 
         var num: Int = 0
         while (cursor.moveToNext()) {
-            var str_gName = cursor.getString((cursor.getColumnIndex("gName"))).toString()
-            var str_gText = cursor.getString((cursor.getColumnIndex("gText"))).toString()
+            var str_gName = cursor.getString((cursor.getColumnIndex("gName"))).toString() // column 이름이 gName인 데이터 (그룹명)
+            var str_gText = cursor.getString((cursor.getColumnIndex("gText"))).toString() // column 이름이 gText인 데이터 (한 줄 소개)
 
             var layout_item: LinearLayout = LinearLayout(this)
-            layout_item.orientation = LinearLayout.VERTICAL
-            layout_item.setPadding(20, 10, 20, 20)
+            layout_item.orientation = LinearLayout.VERTICAL // 수직으로
+            layout_item.setPadding(20, 10, 20, 20) // 패딩 크기 설정
             layout_item.id = num
             layout_item.setTag(str_gName)
 
@@ -74,7 +75,7 @@ class GroupShow : AppCompatActivity() {
 
         cursor.close()
         sqlitedb.close()
-        gDbManager.close()
+        gDBManager.close()
 
         // 그룹 생성 페이지로 이동
         btnMaking.setOnClickListener {
