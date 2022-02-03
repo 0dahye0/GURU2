@@ -19,7 +19,8 @@
             android:layout_width="60sp"
             android:layout_height="wrap_content"
             android:text="그룹명"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/gName"
             android:layout_width="match_parent"
@@ -35,7 +36,8 @@
             android:layout_width="60sp"
             android:layout_height="wrap_content"
             android:text="인원"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/gNumber"
             android:layout_width="match_parent"
@@ -51,7 +53,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="한 줄 소개"
-            android:textSize="18sp" />
+            android:textSize="18sp"
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/gText"
             android:layout_width="match_parent"
