@@ -68,6 +68,7 @@ class InformationModiPage : AppCompatActivity()  {
 
         //수정하기버튼 이벤트 처리
         ModiBtn.setOnClickListener {
+
             var newpwd = newPassWord.text.toString() //새로운 패스워드
             var newpwdch = newPassWordCheck.text.toString() //새로운 패스워드 확인
 
