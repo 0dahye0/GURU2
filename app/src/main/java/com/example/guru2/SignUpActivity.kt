@@ -79,7 +79,7 @@ class SignUpActivity : AppCompatActivity() {
         SignUpFinishBtn.setOnClickListener {
             var sid = SignUpId.text.toString()
             var snickname = SignUpNickName.text.toString()
-            var sstepvalue = SignUpStepValue.text.toString()
+            var sstepvalue = SignUpStepValue.text.toString() //목표 걸음 수
             var spwd = SignUpPassword.text.toString() //패스워드
             var spwdcheck = SignUpPasswordCheck.text.toString() //패스워드 확인
 
@@ -93,7 +93,8 @@ class SignUpActivity : AppCompatActivity() {
                 }
                 else{//모든 빈칸이 올바르게 입력된 경우
                     sqlitedb = dbManager.writableDatabase
-                    sqlitedb.execSQL("INSERT INTO personnel VALUES ('"+ sid +"','"+spwd+"', '"+ snickname +"');")//db에 정보 삽입
+                    //sqlitedb.execSQL("INSERT INTO personnel VALUES ('"+ sid +"','"+spwd+"', '"+ snickname +"');")//db에 정보 삽입
+                    sqlitedb.execSQL("INSERT INTO personnel VALUES ('"+ sid +"','"+spwd+"', '"+ snickname +"', '"+sstepvalue+"');")//db에 정보 삽입
                     sqlitedb.close()
                     Toast.makeText(applicationContext, "가입이 완료되었습니다", Toast.LENGTH_LONG).show()
 

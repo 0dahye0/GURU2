@@ -55,7 +55,7 @@ class MyPage : AppCompatActivity() {
 
         var id = ""
         var nickNa = ""
-        var walk: String
+        var walk=""
         var team: String
 
         //프로필 사진 변경버튼 이벤트 처리
@@ -67,18 +67,20 @@ class MyPage : AppCompatActivity() {
 
         sqlitedb = dbManager.readableDatabase
         var cursor: Cursor
-        cursor = sqlitedb.rawQuery("SELECT id, nickname FROM personnel", null) // 디비에서 해당 로그인 아이디,닉네임 가져오기
+        cursor = sqlitedb.rawQuery("SELECT id, nickname, walk FROM personnel", null) // 디비에서 해당 로그인 아이디,닉네임 가져오기
 
         while (cursor.moveToNext()) {
             id = cursor.getString(0) //id 가져오기
             nickNa = cursor.getString(1) //nickname 가져오기
+            walk = cursor.getString(2)
         }
         personId.setText(id) //사용자 아이디로 세팅
         personNickName.setText(nickNa)//사용자 닉네임으로 세팅
+        personWalk.setText(walk)//목표 걸음 수 세팅
 
         cursor.close()
         sqlitedb.close()
-        //총 걸음 수 가져오기
+
         //소속 팀 가져오기
 
         //개인정보수정버튼 이벤트 처리
