@@ -86,7 +86,8 @@ class GroupMaking : AppCompatActivity() {
                 sqlDB.close()
                 sqlgDB.close()
                 Toast.makeText(applicationContext, "${edtName.text} 그룹이 생성되었습니다!", Toast.LENGTH_SHORT).show()
-                
+
+
                 // 만들어졌으면 그룹 목록으로 화면 전환
                 val intent = Intent(this, GroupShow::class.java)
                 startActivity(intent)

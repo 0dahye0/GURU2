@@ -50,6 +50,12 @@ class MyPage : AppCompatActivity() {
             personNickName.setText(newnickname)
         }
 
+        //그룹에 가입할 경우
+        var groupname = intent.getStringExtra("groupname")
+        if(groupname!=null){
+            personTeam.setText(groupname)
+        }
+
 
         dbManager = DBManager(this, "personnelDB", null, 1)
 
@@ -92,8 +98,9 @@ class MyPage : AppCompatActivity() {
 
         //로그아웃버튼 누르면 로그아웃
         logout.setOnClickListener {
+
             var intent = Intent(this, MainActivity::class.java)
-            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_SINGLE_TOP
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)
         }
 
