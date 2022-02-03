@@ -26,8 +26,8 @@ class MainActivity : AppCompatActivity() {
         //위젯 연결
         editTextId = findViewById(R.id.editTextId)
         editTextPassword = findViewById(R.id.editTextPassword)
-        loginBtn = findViewById(R.id.LoginBtn)
-        signUpBtn = findViewById(R.id.SignUpBtn)
+        loginBtn = findViewById(R.id.loginBtn)
+        signUpBtn = findViewById(R.id.signUpBtn)
 
         dbManager = DBManager(this, "personnelDB", null, 1)
 
