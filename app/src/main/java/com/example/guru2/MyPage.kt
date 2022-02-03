@@ -50,6 +50,12 @@ class MyPage : AppCompatActivity() {
             personNickName.setText(newnickname)
         }
 
+        //그룹에 가입할 경우
+        var groupname = intent.getStringExtra("groupname")
+        if(groupname!=null){
+            personTeam.setText(groupname)
+        }
+
 
         dbManager = DBManager(this, "personnelDB", null, 1)
 
