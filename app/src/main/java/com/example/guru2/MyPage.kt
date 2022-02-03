@@ -21,15 +21,16 @@ class MyPage : AppCompatActivity() {
     lateinit var dbManager:DBManager
     lateinit var sqlitedb: SQLiteDatabase
 
-    lateinit var MyImage : ImageView
-    lateinit var MYImageChangeBtn : Button
-    lateinit var personId : TextView
-    lateinit var personNickName : TextView
-    lateinit var personWalk : TextView
-    lateinit var personTeam : TextView
-    lateinit var informationmodiBtn : Button
-    lateinit var logout : Button
-    private val GALLERY = 1
+    lateinit var MyImage : ImageView //프로필 사진
+    lateinit var MYImageChangeBtn : Button //프로필 사진 변경 버튼
+    lateinit var personId : TextView //사용자 아이디
+    lateinit var personNickName : TextView //사용자 닉네임
+    lateinit var personWalk : TextView //사용자 걸음 수
+    lateinit var personTeam : TextView //사용자 소속 팀
+    lateinit var informationmodiBtn : Button //정보 수정 버튼
+    lateinit var logout : Button //로그아웃 버튼
+
+    private val GALLERY = 1 //프로필 사진 이벤트 처리와 관련된 변수
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,18 +45,11 @@ class MyPage : AppCompatActivity() {
         informationmodiBtn = findViewById(R.id.informationmodiBtn)
         logout = findViewById(R.id.logout)
 
-        //새로운 닉네임 받는다면
+        //새로운 닉네임을 인텐트로 받을 경우 이벤트처리
         var newnickname = intent.getStringExtra("nick")
         if(newnickname != null){
             personNickName.setText(newnickname)
         }
-
-        //그룹에 가입할 경우
-        var groupname = intent.getStringExtra("groupname")
-        if(groupname!=null){
-            personTeam.setText(groupname)
-        }
-
 
         dbManager = DBManager(this, "personnelDB", null, 1)
 
@@ -64,7 +58,7 @@ class MyPage : AppCompatActivity() {
         var walk: String
         var team: String
 
-        //프로필 사진 변경버튼
+        //프로필 사진 변경버튼 이벤트 처리
         MYImageChangeBtn.setOnClickListener {
             val intent:Intent = Intent(Intent.ACTION_GET_CONTENT)
             intent.setType("image/*")
@@ -76,29 +70,28 @@ class MyPage : AppCompatActivity() {
         cursor = sqlitedb.rawQuery("SELECT id, nickname FROM personnel", null) // 디비에서 해당 로그인 아이디,닉네임 가져오기
 
         while (cursor.moveToNext()) {
-            id = cursor.getString(0) //id
-            nickNa = cursor.getString(1) //nickname
+            id = cursor.getString(0) //id 가져오기
+            nickNa = cursor.getString(1) //nickname 가져오기
         }
-        personId.setText(id)
-        personNickName.setText(nickNa)
+        personId.setText(id) //사용자 아이디로 세팅
+        personNickName.setText(nickNa)//사용자 닉네임으로 세팅
 
         cursor.close()
         sqlitedb.close()
         //총 걸음 수 가져오기
         //소속 팀 가져오기
 
-        //개인정보수정버튼 누르면 페이지 이동
+        //개인정보수정버튼 이벤트 처리
         informationmodiBtn.setOnClickListener {
 
             var intent = Intent(this, InformationModiPage::class.java)
             intent.putExtra("id", personId.text.toString()) //인텐트로 id를 정보수정페이지로 넘김
-            intent.putExtra("nick", personNickName.text.toString())
+            intent.putExtra("nick", personNickName.text.toString())//인텐트로 닉네임을 정보수정페이지로 넘김
             startActivity(intent)
         }
 
-        //로그아웃버튼 누르면 로그아웃
-        logout.setOnClickListener {
-
+        //로그아웃버튼 이벤트 처리
+        logout.setOnClickListener {//로그아웃되어 메인페이지로 돌아감
             var intent = Intent(this, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)
@@ -106,6 +99,7 @@ class MyPage : AppCompatActivity() {
 
     }
 
+    //프로필 사진 변경과 관련된 함수
     @Override
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
@@ -113,7 +107,6 @@ class MyPage : AppCompatActivity() {
         if(resultCode== Activity.RESULT_OK){
             if(requestCode==GALLERY){
                 var ImnageData: Uri? = data?.data
-                //Toast.makeText(this, ImnageData.toString(), Toast.LENGTH_SHORT).show()
                 try{
                     val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, ImnageData)
                     MyImage.setImageBitmap(bitmap)
