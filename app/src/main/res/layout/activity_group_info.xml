@@ -26,7 +26,8 @@
             android:id="@+id/gName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center" />
+            android:gravity="center"
+            android:textSize="18sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -45,7 +46,8 @@
             android:id="@+id/gNumber"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center" />
+            android:gravity="center"
+            android:textSize="18sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -64,7 +66,8 @@
             android:id="@+id/gStep"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center" />
+            android:gravity="center"
+            android:textSize="18sp" />
     </LinearLayout>
 
     <LinearLayout
@@ -83,7 +86,8 @@
             android:id="@+id/gText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center" />
+            android:gravity="center"
+            android:textSize="18sp" />
     </LinearLayout>
 
     <Button

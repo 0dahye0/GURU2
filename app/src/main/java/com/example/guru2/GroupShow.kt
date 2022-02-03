@@ -34,9 +34,6 @@ class GroupShow : AppCompatActivity() {
         mainBtn2 = findViewById(R.id.mainBtn2)
         myPageBtn2 = findViewById(R.id.myPageBtn2)
 
-        // 사용자 아이디 가져오기
-        var id: String = intent.getStringExtra("userId").toString()
-
         var cursor: Cursor
         cursor = sqlitedb.rawQuery("SELECT * FROM groupDB;", null)
 
@@ -47,27 +44,26 @@ class GroupShow : AppCompatActivity() {
 
             var layout_item: LinearLayout = LinearLayout(this)
             layout_item.orientation = LinearLayout.VERTICAL
-            layout_item.setPadding(20, 10, 20, 10)
+            layout_item.setPadding(20, 10, 20, 20)
             layout_item.id = num
             layout_item.setTag(str_gName)
 
             // 그룹 이름 보여 주기
             var tvName: TextView = TextView(this)
             tvName.text = str_gName
-            tvName.textSize = 30F
-            tvName.setBackgroundColor(Color.LTGRAY)
+            tvName.textSize = 27F
+            tvName.setBackgroundColor(Color.parseColor("#8EC9A4"))
             layout_item.addView(tvName)
 
             // 그룹 한줄 소개 보여주기
             var tvText: TextView = TextView(this)
             tvText.text = str_gText
+            tvText.textSize = 18F
             layout_item.addView(tvText)
 
             // 줄 클릭했을 때
             layout_item.setOnClickListener {
                 val intent = Intent(this, GroupInfo::class.java)
-                // 사용자 아이디 데이터 보내기
-                intent.putExtra("userId", id)
                 // 그룹 이름 보내기
                 intent.putExtra("intent_name", str_gName)
                 startActivity(intent)
