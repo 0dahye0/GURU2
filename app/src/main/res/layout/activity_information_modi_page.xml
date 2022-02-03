@@ -221,7 +221,7 @@
         android:text="수정하기"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:cornerRadius="23sp"
+        app:cornerRadius="23dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -244,9 +244,11 @@
         android:id="@+id/BackBtn"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="31dp"
+        android:layout_marginBottom="16dp"
         android:text="돌아가기"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        tools:layout_editor_absoluteY="595dp" />
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
