@@ -94,22 +94,23 @@
     <EditText
         android:id="@+id/newNickName"
         android:layout_width="130dp"
-        android:layout_height="38dp"
-        android:layout_marginBottom="392dp"
+        android:layout_height="35dp"
         android:background="@drawable/textbox"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.555"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.368" />
 
     <Button
         android:id="@+id/newNickNameCheckBtn"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
+        android:layout_height="35dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="228dp"
+        android:layout_marginTop="230dp"
         android:insetTop="0dp"
         android:insetBottom="0dp"
         android:text="중복확인"
@@ -117,7 +118,7 @@
         android:textStyle="bold"
         app:cornerRadius="10sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.95"
+        app:layout_constraintHorizontal_bias="0.922"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -153,7 +154,7 @@
         android:id="@+id/textView8"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="440dp"
+        android:layout_marginTop="442dp"
         android:text="새 비밀번호"
         android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -175,7 +176,7 @@
     <EditText
         android:id="@+id/orginalPassWord"
         android:layout_width="210dp"
-        android:layout_height="38dp"
+        android:layout_height="35dp"
         android:layout_marginBottom="240dp"
         android:background="@drawable/textbox"
         android:ems="10"
@@ -188,7 +189,7 @@
     <EditText
         android:id="@+id/newPassWord"
         android:layout_width="210dp"
-        android:layout_height="38dp"
+        android:layout_height="35dp"
         android:layout_marginStart="176dp"
         android:layout_marginBottom="188dp"
         android:background="@drawable/textbox"
@@ -200,12 +201,12 @@
     <EditText
         android:id="@+id/newPassWordCheck"
         android:layout_width="210dp"
-        android:layout_height="38dp"
-        android:layout_marginBottom="16dp"
+        android:layout_height="35dp"
+        android:layout_marginBottom="132dp"
         android:background="@drawable/textbox"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/ModiBtn"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.875"
         app:layout_constraintStart_toStartOf="parent" />
