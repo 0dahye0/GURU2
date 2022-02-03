@@ -93,7 +93,6 @@ class SignUpActivity : AppCompatActivity() {
                 }
                 else{//모든 빈칸이 올바르게 입력된 경우
                     sqlitedb = dbManager.writableDatabase
-                    //sqlitedb.execSQL("INSERT INTO personnel VALUES ('"+ sid +"','"+spwd+"', '"+ snickname +"');")//db에 정보 삽입
                     sqlitedb.execSQL("INSERT INTO personnel VALUES ('"+ sid +"','"+spwd+"', '"+ snickname +"', '"+sstepvalue+"');")//db에 정보 삽입
                     sqlitedb.close()
                     Toast.makeText(applicationContext, "가입이 완료되었습니다", Toast.LENGTH_LONG).show()
