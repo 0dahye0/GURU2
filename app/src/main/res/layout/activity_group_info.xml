@@ -21,10 +21,12 @@
             android:text="그룹명"
             android:textSize="18sp"
             android:textStyle="bold" />
+
         <TextView
             android:id="@+id/gName"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:gravity="center" />
     </LinearLayout>
 
     <LinearLayout
@@ -38,10 +40,31 @@
             android:text="인원"
             android:textSize="18sp"
             android:textStyle="bold" />
+
         <TextView
             android:id="@+id/gNumber"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:gravity="center" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="목표 걸음수"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/gStep"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center" />
     </LinearLayout>
 
     <LinearLayout
@@ -55,10 +78,12 @@
             android:text="한 줄 소개"
             android:textSize="18sp"
             android:textStyle="bold" />
+
         <TextView
             android:id="@+id/gText"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:gravity="center" />
     </LinearLayout>
 
     <Button

@@ -17,11 +17,13 @@ class GroupInfo : AppCompatActivity() {
 
     lateinit var tvName: TextView
     lateinit var tvNumber: TextView
+    lateinit var tvStep: TextView
     lateinit var tvText: TextView
     lateinit var btnEnjoy: Button
 
     lateinit var str_gName: String
     var gNumber: Int = 0
+    lateinit var str_gStep: String
     var gCount: Int = 1
     lateinit var str_gText: String
 
@@ -31,6 +33,7 @@ class GroupInfo : AppCompatActivity() {
 
         tvName = findViewById(R.id.gName)
         tvNumber = findViewById(R.id.gNumber)
+        tvStep = findViewById(R.id.gStep)
         tvText = findViewById(R.id.gText)
         btnEnjoy = findViewById(R.id.btnEnjoy)
 
@@ -49,6 +52,7 @@ class GroupInfo : AppCompatActivity() {
 
         if (cursor.moveToNext()) {
             gNumber = cursor.getInt((cursor.getColumnIndex("gNumber")))
+            str_gStep = cursor.getString((cursor.getColumnIndex("gStep")))
             str_gText = cursor.getString((cursor.getColumnIndex("gText"))).toString()
             gCount = cursor.getInt((cursor.getColumnIndex("gCount")))
         }
@@ -59,6 +63,7 @@ class GroupInfo : AppCompatActivity() {
 
         tvName.text = str_gName
         tvNumber.text ="$gCount / $gNumber"
+        tvStep.text = str_gStep
         tvText.text = str_gText + "\n"
 
         btnEnjoy.setOnClickListener {
@@ -76,7 +81,7 @@ class GroupInfo : AppCompatActivity() {
     inner class myDBHelper(context: Context) : SQLiteOpenHelper(context, "groupDB", null, 1) {
         // 테이블 생성
         override fun onCreate(db: SQLiteDatabase?) {
-            db!!.execSQL("CREATE TABLE groupDB (gName String, gNumber INTEGER, gText String, gCount INTEGER, gMember1 String, gMember2 String, gMember3 String, gMember4 String);")
+            db!!.execSQL("CREATE TABLE groupDB (gName String, gNumber INTEGER, gText String, gStep String, gCount INTEGER, gMember1 String, gMember2 String, gMember3 String, gMember4 String);")
         }
 
         // 테이블 삭제 후 다시 생성

@@ -83,8 +83,6 @@ class GroupShow : AppCompatActivity() {
         // 그룹 생성 페이지로 이동
         btnMaking.setOnClickListener {
             val intent = Intent(this, GroupMaking::class.java)
-            // 사용자 아이디 데이터
-            //intent.putExtra("userId", id)
             startActivity(intent)
         }
 

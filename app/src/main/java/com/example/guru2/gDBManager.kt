@@ -10,7 +10,7 @@ class gDBManager(context: Context?,
                  version: Int
 ) : SQLiteOpenHelper(context, name, factory, version) {
     override fun onCreate(db: SQLiteDatabase?) {
-        db!!.execSQL("CREATE TABLE groupDB (gName text, gNumber INTEGER, gText text, gCount INTEGER, gMember1 text, gMember2 text, gMember3 text, gMember4 text)")
+        db!!.execSQL("CREATE TABLE groupDB (gName text, gNumber INTEGER, gText text, gStep String, gCount INTEGER, gMember1 text, gMember2 text, gMember3 text, gMember4 text)")
     }
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {

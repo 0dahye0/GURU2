@@ -54,7 +54,7 @@ class SignUpActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "존재하는 아이디입니다.", Toast.LENGTH_LONG).show()
             }
             else{
-                Toast.makeText(applicationContext, "사용가능한 아이디입니다.", Toast.LENGTH_LONG).show()
+                Toast.makeText(applicationContext, "사용 가능한 아이디입니다.", Toast.LENGTH_LONG).show()
             }
         }
 
@@ -71,7 +71,7 @@ class SignUpActivity : AppCompatActivity() {
                 Toast.makeText(applicationContext, "존재하는 닉네임입니다.", Toast.LENGTH_SHORT).show()
             }
             else{
-                Toast.makeText(applicationContext, "사용가능한 닉네임입니다.", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "사용 가능한 닉네임입니다.", Toast.LENGTH_SHORT).show()
             }
         }
 

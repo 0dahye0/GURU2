@@ -71,7 +71,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.807"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editStep"
+        app:layout_constraintTop_toBottomOf="@+id/edtStep"
         app:layout_constraintVertical_bias="0.769" />
 
     <TextView
@@ -88,13 +88,13 @@
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
     <EditText
-        android:id="@+id/editStep"
+        android:id="@+id/edtStep"
         android:layout_width="250dp"
         android:layout_height="38dp"
         android:layout_marginTop="40dp"
         android:background="@drawable/textbox"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.807"
         app:layout_constraintStart_toStartOf="parent"
@@ -147,7 +147,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnGname"
         android:layout_width="90dp"
         android:layout_height="38dp"
         android:layout_marginTop="148dp"
