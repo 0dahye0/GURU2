@@ -119,20 +119,20 @@
         android:id="@+id/personWalk"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="100dp"
+        android:layout_marginStart="80dp"
         android:layout_marginEnd="142dp"
         android:layout_marginBottom="240dp"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.166"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/walk" />
 
     <TextView
         android:id="@+id/personTeam"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="124dp"
+        android:layout_marginStart="100dp"
         android:layout_marginEnd="142dp"
         android:layout_marginBottom="188dp"
         android:textSize="16sp"

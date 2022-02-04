@@ -92,7 +92,7 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
 
         // 마이 페이지로 이동
         myPageBtn.setOnClickListener {
-            intent = Intent(this, MyPage::class.java)
+            var intent = Intent(this, MyPage::class.java)
             intent.putExtra("id", userID) // 유저 아이디 보내기
             startActivity(intent)
         }

@@ -85,9 +85,9 @@ class MyPage : AppCompatActivity() {
             walk = cursor.getString((cursor.getColumnIndex("walk")))
         }
 
-        personId.setText(id) //사용자 아이디로 세팅
-        personNickName.setText(nickNa)//사용자 닉네임으로 세팅
-        personWalk.setText(walk)//목표 걸음 수 세팅
+        personId.setText(id) // 사용자 아이디로 세팅
+        personNickName.setText(nickNa) // 사용자 닉네임으로 세팅
+        personWalk.setText(walk) //목표 걸음 수 세팅
 
         cursor.close()
         sqlitedb.close()
@@ -103,20 +103,20 @@ class MyPage : AppCompatActivity() {
             team = cursor.getString(0)
         }
 
-        if(cursor.getCount() != 0){
-            personTeam.setText(team)//소속그룹있다면, 소속팀 세팅
+        if (cursor.getCount() != 0) {
+            personTeam.setText(team) // 소속 그룹 있다면, 소속팀 세팅
         }
         else {
-            //소속그룹없다면, 아무런 결과 나타나지 않음
+            personTeam.setText("그룹에 가입해 보세요!") //소속 그룹 없다면, 텍스트 표시
         }
 
-        //개인정보수정버튼 이벤트 처리
+        // 개인 정보 수정버튼 이벤트 처리
         informationmodiBtn.setOnClickListener {
 
             var intent = Intent(this, InformationModiPage::class.java)
             //intent.putExtra("id", personId.text.toString()) //인텐트로 id를 정보수정페이지로 넘김
-            intent.putExtra("id", id) //인텐트로 id를 정보수정페이지로 넘김
-            intent.putExtra("nick", personNickName.text.toString())//인텐트로 닉네임을 정보수정페이지로 넘김
+            intent.putExtra("id", userID) //인텐트로 id를 정보 수정 페이지로 넘김
+            intent.putExtra("nick", personNickName.text.toString()) // 인텐트로 닉네임을 정보수정페이지로 넘김
             startActivity(intent)
         }
 

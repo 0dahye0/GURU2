@@ -70,6 +70,8 @@ class GroupShow : AppCompatActivity() {
                 val intent = Intent(this, GroupInfo::class.java)
                 // 그룹 이름 보내기
                 intent.putExtra("intent_name", str_gName)
+                // 유저 아이디 보내기
+                intent.putExtra("id", userID)
                 startActivity(intent)
             }
             layout.addView(layout_item)

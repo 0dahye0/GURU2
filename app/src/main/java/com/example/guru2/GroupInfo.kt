@@ -43,6 +43,8 @@ class GroupInfo : AppCompatActivity() {
         tvText = findViewById(R.id.gText)
         btnEnjoy = findViewById(R.id.btnEnjoy)
 
+        var userID = intent.getStringExtra("id").toString()
+
         // helper 선언
         var myHelper: myDBHelper = myDBHelper(this)
         var myHelper2: myDBHelper2 = myDBHelper2(this)
@@ -83,14 +85,16 @@ class GroupInfo : AppCompatActivity() {
             // 멤버 업데이트
             sqlDB = myHelper2.writableDatabase // 읽고 쓰기 가능 (personnelDB)
 
-            var cursor: Cursor
+            /*var cursor: Cursor
+
+            cursor = sqlitedb.rawQuery("SELECT * FROM personnel WHERE id = '" + userID + "';", null)
             cursor = sqlDB.rawQuery("SELECT id FROM personnel", null) // 디비에서 해당 로그인 아이디 가져오기
 
             while (cursor.moveToNext()) {
                 id = cursor.getString(0) // id 가져오기
-            }
+            }*/
 
-            sqlitedb.execSQL("UPDATE groupDB SET gMember${gCount+1} = '" + id + "' WHERE gName ='" + str_gName + "';")
+            sqlitedb.execSQL("UPDATE groupDB SET gMember${gCount+1} = '" + userID + "' WHERE gName ='" + str_gName + "';")
             sqlDB.close()
             gCount++ // 인원수 한 명 증가
 
@@ -101,6 +105,7 @@ class GroupInfo : AppCompatActivity() {
 
             // 메인 화면으로 전환
             var intent = Intent(this, StepCounter::class.java)
+            intent.putExtra("id", userID)
             startActivity(intent)
         }
     }
