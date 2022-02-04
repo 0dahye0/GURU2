@@ -11,10 +11,7 @@ import android.database.sqlite.SQLiteOpenHelper
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.TextView
-import android.widget.Toast
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import java.lang.Exception
 
@@ -34,6 +31,8 @@ class MyPage : AppCompatActivity() {
     lateinit var personTeam : TextView //사용자 소속 팀
     lateinit var informationmodiBtn : Button //정보 수정 버튼
     lateinit var logout : Button //로그아웃 버튼
+    lateinit var mainBtn3 : ImageButton // 메인 페이지 이동 버튼
+    lateinit var groupBtn3 : ImageButton // 그룹 페이지 이동 버튼
 
     private val GALLERY = 1 //프로필 사진 이벤트 처리와 관련된 변수
 
@@ -49,6 +48,8 @@ class MyPage : AppCompatActivity() {
         personTeam = findViewById(R.id.personTeam)
         informationmodiBtn = findViewById(R.id.informationmodiBtn)
         logout = findViewById(R.id.logout)
+        mainBtn3 = findViewById(R.id.mainBtn3)
+        groupBtn3 = findViewById(R.id.groupBtn3)
 
         //새로운 닉네임을 인텐트로 받을 경우 이벤트처리
         var newnickname = intent.getStringExtra("nick")
@@ -120,13 +121,26 @@ class MyPage : AppCompatActivity() {
             startActivity(intent)
         }
 
-        //로그아웃버튼 이벤트 처리
+        //로그아웃 버튼 이벤트 처리
         logout.setOnClickListener {//로그아웃되어 메인페이지로 돌아감
             var intent = Intent(this, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)
         }
 
+        // 메인 페이지로 이동
+        mainBtn3.setOnClickListener {
+            var intent = Intent(this, StepCounter::class.java)
+            intent.putExtra("id", userID)
+            startActivity(intent)
+        }
+
+        // 그룹 페이지로 이동
+        groupBtn3.setOnClickListener {
+            var intent = Intent(this, GroupShow::class.java)
+            intent.putExtra("id", userID)
+            startActivity(intent)
+        }
     }
 
     //프로필 사진 변경과 관련된 함수
@@ -134,8 +148,8 @@ class MyPage : AppCompatActivity() {
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
-        if(resultCode== Activity.RESULT_OK){
-            if(requestCode==GALLERY){
+        if (resultCode == Activity.RESULT_OK){
+            if(requestCode == GALLERY){
                 var ImnageData: Uri? = data?.data
                 try{
                     val bitmap = MediaStore.Images.Media.getBitmap(contentResolver, ImnageData)
