@@ -237,12 +237,11 @@
         android:id="@+id/mainBtn3"
         android:layout_width="33dp"
         android:layout_height="34dp"
-        android:layout_marginStart="60dp"
+        android:layout_marginTop="624dp"
+        android:layout_marginEnd="323dp"
         android:background="@empty"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/logout"
-        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@mipmap/ic_home" />
 
     <ImageButton
@@ -264,7 +263,7 @@
         android:layout_marginTop="36dp"
         android:background="@empty"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.826"
+        app:layout_constraintHorizontal_bias="0.86"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/logout"
         app:srcCompat="@mipmap/ic_person" />
