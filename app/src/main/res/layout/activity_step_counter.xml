@@ -7,6 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".StepCounter">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="524dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/menubar" />
+
     <ProgressBar
         android:id="@+id/progressBar"
         style="?android:attr/progressBarStyle"
@@ -17,6 +28,8 @@
         android:progress="0"
         android:progressDrawable="@drawable/circle_progressbar"
         android:rotation="-90"
+        android:progressBackgroundTint="#9E9E9E"
+        android:progressTint="#9FE6A0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
@@ -30,9 +43,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
         android:layout_marginTop="28dp"
+        android:backgroundTint="@color/green_700"
         android:clickable="true"
         android:src="@drawable/ic_baseline_play_circle_24"
-        app:backgroundTint="#B2E1B7"
+
         app:layout_constraintEnd_toStartOf="@+id/stopFab"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
@@ -85,40 +99,35 @@
         android:id="@+id/groupBtn"
         android:layout_width="65dp"
         android:layout_height="55dp"
-        android:layout_marginTop="604dp"
-        android:background="@empty"
-        android:tint="@empty"
-        app:layout_constraintEnd_toStartOf="@+id/myPageBtn"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/mainBtn"
+        android:layout_marginTop="612dp"
+        android:background="#00FFFFFF"
+        android:tint="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/group_icon" />
+        app:srcCompat="@mipmap/ic_hands" />
 
     <ImageButton
         android:id="@+id/mainBtn"
         android:layout_width="60dp"
         android:layout_height="57dp"
-        android:layout_marginTop="604dp"
-        android:background="@empty"
-        android:tint="@empty"
-        app:layout_constraintEnd_toStartOf="@+id/groupBtn"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_marginStart="43dp"
+        android:layout_marginTop="612dp"
+        android:background="#00FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/main_icon" />
+        app:srcCompat="@mipmap/ic_home" />
 
     <ImageButton
         android:id="@+id/myPageBtn"
         android:layout_width="48dp"
         android:layout_height="54dp"
-        android:layout_marginTop="604dp"
-        android:background="@empty"
-        android:tint="@empty"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/groupBtn"
+        android:layout_marginTop="612dp"
+        android:layout_marginEnd="45dp"
+        android:backgroundTint="#00FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/mypage_icon" />
+        app:srcCompat="@mipmap/ic_person" />
 
     <TextView
         android:id="@+id/textView11"

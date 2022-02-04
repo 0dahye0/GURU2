@@ -94,6 +94,8 @@
         android:id="@+id/btnEnjoy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="참여하기" />
+        android:text="참여하기"
+        android:textSize="16sp"
+        android:textStyle="bold" />
 
 </LinearLayout>
