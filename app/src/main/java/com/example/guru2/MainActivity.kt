@@ -63,6 +63,7 @@ class MainActivity : AppCompatActivity() {
                             //로그인 성공 이벤트 처리
                             Toast.makeText(applicationContext, "로그인 성공", Toast.LENGTH_SHORT).show() // 아이디, 패스워드가 둘 다 일치했음으로 로그인 성공
                             var intent = Intent(this, StepCounter::class.java)
+                            intent.putExtra("id", edid) // 인텐트로 아이디 전달
                             startActivity(intent)
                         }
                         else{

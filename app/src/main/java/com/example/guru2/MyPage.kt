@@ -72,14 +72,19 @@ class MyPage : AppCompatActivity() {
         }
 
         sqlitedb = dbManager.readableDatabase
-        var cursor: Cursor
-        cursor = sqlitedb.rawQuery("SELECT id, nickname, walk FROM personnel", null) // 디비에서 해당 로그인 아이디,닉네임, 목표 걸음 수 가져오기
 
-        while (cursor.moveToNext()) {
-            id = cursor.getString(0) // id 가져오기
-            nickNa = cursor.getString(1) // nickname 가져오기
-            walk = cursor.getString(2)
+        var userID: String = intent.getStringExtra("id").toString() // 유저가 입력한 아이디 갖고 오기
+
+        var cursor: Cursor
+        cursor = sqlitedb.rawQuery("SELECT * FROM personnel WHERE id = '" + userID + "';", null)
+
+        // 각 데이터들을 변수에 담음
+        if (cursor.moveToNext()) {
+            id = cursor.getString((cursor.getColumnIndex("id")))
+            nickNa = cursor.getString((cursor.getColumnIndex("nickname")))
+            walk = cursor.getString((cursor.getColumnIndex("walk")))
         }
+
         personId.setText(id) //사용자 아이디로 세팅
         personNickName.setText(nickNa)//사용자 닉네임으로 세팅
         personWalk.setText(walk)//목표 걸음 수 세팅
@@ -88,7 +93,7 @@ class MyPage : AppCompatActivity() {
         sqlitedb.close()
 
 
-        //소속 팀 가져오기
+        // 소속 팀 가져오기
         myHelper = myDBHelper(this)
         sqlgDB = myHelper.readableDatabase
         var sql = "SELECT gName FROM groupDB WHERE gMember1 = '" + id + "'" + "OR gMember2 = '" + id + "'" + "OR gMember3= '" + id + "'"+

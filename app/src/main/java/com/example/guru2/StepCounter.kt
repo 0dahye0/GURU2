@@ -31,6 +31,7 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
 
     private var currentStep = 0
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_step_counter)
@@ -41,6 +42,9 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
         groupBtn = findViewById(R.id.groupBtn)
         myPageBtn = findViewById(R.id.myPageBtn)
         goal=findViewById(R.id.goal)
+
+        // 유저 아이디 갖고 오기
+        var userID = intent.getStringExtra("id").toString()
 
         //목표칸에 들어갈 걸음 수
         dbManager = DBManager(this, "personnelDB", null, 1)
@@ -88,6 +92,7 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
         // 마이 페이지로 이동
         myPageBtn.setOnClickListener {
             intent = Intent(this, MyPage::class.java)
+            intent.putExtra("id", userID) // 유저 아이디 보내기
             startActivity(intent)
         }
     }
