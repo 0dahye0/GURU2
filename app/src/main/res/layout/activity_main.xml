@@ -8,47 +8,34 @@
 
     <ImageView
         android:id="@+id/Logo"
-        android:layout_width="104dp"
-        android:layout_height="167dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="305dp"
+        android:layout_height="300dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.11"
-        app:srcCompat="@drawable/logo" />
+        app:srcCompat="@mipmap/ic_logo" />
 
     <ImageView
         android:id="@+id/Background"
         android:layout_width="483dp"
         android:layout_height="531dp"
-        android:layout_marginTop="112dp"
+        android:layout_marginTop="320dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Logo"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/background2" />
 
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="148dp"
+        android:layout_marginTop="416dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/background1" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="160dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Logo"
-        app:srcCompat="@drawable/name" />
 
     <EditText
         android:id="@+id/editTextPassword"
@@ -142,6 +129,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.121"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="268dp"
+        android:text="가치 걸을래?"
+        android:textSize="25sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
