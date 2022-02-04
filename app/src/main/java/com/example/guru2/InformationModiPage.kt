@@ -84,8 +84,8 @@ class InformationModiPage : AppCompatActivity()  {
                 dbpwd = cursor.getString(0)
             }
 
-            if(cursor.getCount() != 0){//있을 때
-                if(!oripwd.equals(dbpwd)){//있는데 비밀번호가 안 맞음
+            if(cursor.getCount() != 0){
+                if(!oripwd.equals(dbpwd)){//현재 패스워드와 db에서 가져온 패스워드가 동일하지 않을 때
                     Toast.makeText(applicationContext, "기존 비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show()
                 }
                 else{
@@ -93,10 +93,11 @@ class InformationModiPage : AppCompatActivity()  {
                     if(!newpwd.equals(newpwdch)){//비밀번호 입력과 비밀번호 확인 칸의 문자열이 동일하지 않을 때
                         Toast.makeText(applicationContext, "새로운 비밀번호 확인을 다시 해주세요.", Toast.LENGTH_SHORT).show()
                     }
-                    else{//기존 비밀번호, 새로운 비밀번호 동일
+                    else{//수정하기
                         sqlitedb = dbManager.writableDatabase
                         sqlitedb.execSQL("UPDATE personnel SET pwd = '" + newPassWord.text +"' WHERE id = '" + id +"';")
                         Toast.makeText(applicationContext, "수정완료", Toast.LENGTH_SHORT).show()
+
                     }
                 }
             }
