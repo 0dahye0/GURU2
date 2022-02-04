@@ -10,7 +10,7 @@
         android:id="@+id/Background1"
         android:layout_width="495dp"
         android:layout_height="522dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/SignUpStepValue"
@@ -30,11 +30,10 @@
 
     <ImageView
         android:id="@+id/Underline"
-        android:layout_width="104dp"
-        android:layout_height="18dp"
+        android:layout_width="97dp"
+        android:layout_height="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.076"
@@ -42,16 +41,16 @@
 
     <Button
         android:id="@+id/SignUpFinishBtn"
-        android:layout_width="330dp"
+        android:layout_width="310dp"
         android:layout_height="44dp"
+        android:backgroundTint="#8EC9A4"
         android:insetTop="0dp"
         android:insetBottom="0dp"
         android:text="회원가입 완료"
-        android:backgroundTint="#8EC9A4"
         android:textColor="#FFFFFF"
-        android:textSize="16sp"
+        android:textSize="18sp"
         android:textStyle="bold"
-        app:cornerRadius="8sp"
+        app:cornerRadius="10sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
@@ -64,34 +63,33 @@
         android:layout_width="210dp"
         android:layout_height="33dp"
         android:layout_marginEnd="44dp"
+        android:layout_marginBottom="28dp"
         android:background="@drawable/textbox"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/Nickname"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.331"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Id"
-        app:layout_constraintVertical_bias="0.275" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/SignUpIdCheckBtn"
-        android:layout_width="100dp"
+        android:layout_width="90dp"
         android:layout_height="33dp"
         android:layout_marginBottom="8dp"
         android:insetTop="0dp"
         android:insetBottom="0dp"
         android:text="중복 확인"
         android:textColor="#2E2E2E"
-        android:textSize="13sp"
+        android:textSize="12sp"
         android:textStyle="bold"
         app:cornerRadius="8sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintHorizontal_bias="0.135"
         app:layout_constraintStart_toEndOf="@+id/SingUpId"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.215" />
+        app:layout_constraintVertical_bias="0.205" />
 
     <EditText
         android:id="@+id/SignUpPasswordCheck"
@@ -120,65 +118,65 @@
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.181"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.664" />
+        app:layout_constraintVertical_bias="0.661" />
 
     <EditText
         android:id="@+id/SignUpNickName"
         android:layout_width="210dp"
         android:layout_height="33dp"
         android:layout_marginEnd="41dp"
+        android:layout_marginBottom="28dp"
         android:background="@drawable/textbox"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toTopOf="@+id/Step"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.325"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/Nickname"
-        app:layout_constraintVertical_bias="0.261" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/SignUpNickNameCheckBtn"
-        android:layout_width="100dp"
+        android:layout_width="90dp"
         android:layout_height="33dp"
         android:layout_marginBottom="8dp"
         android:insetTop="0dp"
         android:insetBottom="0dp"
         android:text="중복 확인"
         android:textColor="#2E2E2E"
-        android:textSize="13sp"
+        android:textSize="12sp"
         android:textStyle="bold"
         app:cornerRadius="8sp"
         app:layout_constraintBottom_toTopOf="@+id/SignUpFinishBtn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintHorizontal_bias="0.135"
         app:layout_constraintStart_toEndOf="@+id/SignUpNickName"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.418" />
+        app:layout_constraintVertical_bias="0.4" />
 
     <EditText
         android:id="@+id/SignUpStepValue"
         android:layout_width="230dp"
         android:layout_height="33dp"
         android:layout_marginStart="10dp"
+        android:layout_marginBottom="28dp"
         android:background="@drawable/textbox"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/textView13"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.245"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.522" />
+        app:layout_constraintVertical_bias="0.981" />
 
     <TextView
         android:id="@+id/Id"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="96dp"
         android:text="아이디"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -205,21 +203,20 @@
         android:id="@+id/Nickname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="188dp"
         android:text="닉네임"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.142"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.306" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/Step"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="292dp"
+        android:layout_marginTop="280dp"
         android:text="목표 걸음 수"
         android:textSize="16sp"
         android:textStyle="bold"
@@ -240,7 +237,7 @@
         app:layout_constraintHorizontal_bias="0.147"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.616" />
+        app:layout_constraintVertical_bias="0.596" />
 
     <TextView
         android:id="@+id/textView14"
