@@ -29,7 +29,7 @@ class GroupInfo : AppCompatActivity() {
     var gCount: Int = 1 // 해당 그룹 현재 참여 중 인원수
     lateinit var str_gText: String // 해당 그룹 한 줄 소개
 
-    lateinit var id: String
+    var id: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

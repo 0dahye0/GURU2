@@ -45,15 +45,16 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
         //목표칸에 들어갈 걸음 수
         dbManager = DBManager(this, "personnelDB", null, 1)
         sqlitedb = dbManager.readableDatabase
+
         var cursor: Cursor
-        cursor = sqlitedb.rawQuery("SELECT walk FROM personnel", null) // 디비에서 해당 로그인 아이디,닉네임 가져오기
-        var walk=""
+        cursor = sqlitedb.rawQuery("SELECT walk FROM personnel", null) // 디비에서 걸음수 가져오기
+        var walk = ""
         while (cursor.moveToNext()) {
             walk = cursor.getString(0)
         }
 
         if(cursor.getCount() != 0){
-            goal.setText(walk)
+            goal.setText(walk + " 걸음")
         }
 
 
