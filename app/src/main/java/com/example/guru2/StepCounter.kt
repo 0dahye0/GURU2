@@ -2,6 +2,8 @@ package com.example.guru2
 
 import android.content.Context
 import android.content.Intent
+import android.database.Cursor
+import android.database.sqlite.SQLiteDatabase
 import android.hardware.Sensor
 import android.hardware.SensorEvent
 import android.hardware.SensorEventListener
@@ -23,6 +25,9 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
     private lateinit var stopFab: FloatingActionButton
     private lateinit var groupBtn: ImageButton
     private lateinit var myPageBtn: ImageButton
+    private lateinit var goal : TextView
+    lateinit var dbManager:DBManager
+    lateinit var sqlitedb: SQLiteDatabase
 
     private var currentStep = 0
 
@@ -35,6 +40,23 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
         stopFab = findViewById(R.id.stopFab)
         groupBtn = findViewById(R.id.groupBtn)
         myPageBtn = findViewById(R.id.myPageBtn)
+        goal=findViewById(R.id.goal)
+
+        //목표칸에 들어갈 걸음 수
+        dbManager = DBManager(this, "personnelDB", null, 1)
+        sqlitedb = dbManager.readableDatabase
+        var cursor: Cursor
+        cursor = sqlitedb.rawQuery("SELECT walk FROM personnel", null) // 디비에서 해당 로그인 아이디,닉네임 가져오기
+        var walk=""
+        while (cursor.moveToNext()) {
+            walk = cursor.getString(0)
+        }
+
+        if(cursor.getCount() != 0){
+            goal.setText(walk)
+        }
+
+
 
         // play(pause) 버튼 클릭 이벤트
         playFab.setOnClickListener {
