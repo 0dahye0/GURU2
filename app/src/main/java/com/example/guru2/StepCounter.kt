@@ -59,7 +59,7 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
 
         if(cursor.getCount() != 0) {
             goal.setText(walk + " 걸음")
-            progressBar.max = walk as Int
+            progressBar.max = walk.toInt()
         }
 
         // play(pause) 버튼 클릭 이벤트
