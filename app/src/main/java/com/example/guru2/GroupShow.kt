@@ -84,20 +84,21 @@ class GroupShow : AppCompatActivity() {
 
         // 그룹 생성 페이지로 이동
         btnMaking.setOnClickListener {
-            val intent = Intent(this, GroupMaking::class.java)
+            var intent = Intent(this, GroupMaking::class.java)
             intent.putExtra("id", userID)
             startActivity(intent)
         }
 
         // 메인 페이지로 이동
         mainBtn2.setOnClickListener {
-            val intent = Intent(this, StepCounter::class.java)
+            var intent = Intent(this, StepCounter::class.java)
+            intent.putExtra("id", userID)
             startActivity(intent)
         }
 
         // 마이 페이지로 이동
         myPageBtn2.setOnClickListener {
-            val intent = Intent(this, MyPage::class.java)
+            var intent = Intent(this, MyPage::class.java)
             intent.putExtra("id", userID)
             startActivity(intent)
         }
