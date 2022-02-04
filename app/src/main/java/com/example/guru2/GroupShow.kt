@@ -34,6 +34,9 @@ class GroupShow : AppCompatActivity() {
         mainBtn2 = findViewById(R.id.mainBtn2)
         myPageBtn2 = findViewById(R.id.myPageBtn2)
 
+        // 유저 아이디 갖고 오기
+        var userID = intent.getStringExtra("id").toString()
+
         var cursor: Cursor
         // groupDB 테이블 정보 모두 가져오기
         cursor = sqlitedb.rawQuery("SELECT * FROM groupDB;", null)
@@ -92,6 +95,7 @@ class GroupShow : AppCompatActivity() {
         // 마이 페이지로 이동
         myPageBtn2.setOnClickListener {
             val intent = Intent(this, MyPage::class.java)
+            intent.putExtra("id", userID)
             startActivity(intent)
         }
     }
