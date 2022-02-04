@@ -95,22 +95,21 @@
         android:id="@+id/newNickName"
         android:layout_width="130dp"
         android:layout_height="35dp"
-        android:background="@drawable/textbox"
+        android:layout_marginTop="224dp"
+        android:background="@drawable/textbarstroke"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.368" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/newNickNameCheckBtn"
         android:layout_width="wrap_content"
         android:layout_height="35dp"
         android:layout_marginStart="1dp"
-        android:layout_marginTop="230dp"
+        android:layout_marginTop="224dp"
         android:insetTop="0dp"
         android:insetBottom="0dp"
         android:text="중복확인"
@@ -192,17 +191,20 @@
         android:layout_width="210dp"
         android:layout_height="35dp"
         android:layout_marginStart="176dp"
+        android:layout_marginTop="13dp"
         android:layout_marginBottom="210dp"
         android:background="@drawable/textbox"
         android:ems="10"
         android:inputType="textPassword"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/orginalPassWord" />
 
     <EditText
         android:id="@+id/newPassWordCheck"
         android:layout_width="210dp"
         android:layout_height="35dp"
+        android:layout_marginTop="13dp"
         android:layout_marginBottom="160dp"
         android:background="@drawable/textbox"
         android:ems="10"
@@ -210,7 +212,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.875"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/newPassWord" />
 
     <Button
         android:id="@+id/ModiBtn"
