@@ -71,7 +71,7 @@ class InformationModiPage : AppCompatActivity()  {
                 sqlitedb = dbManager.writableDatabase
                 sqlitedb.execSQL("UPDATE personnel SET nickname = '" + newNickName.text + "' WHERE id = '" + id +"';")
                 Toast.makeText(applicationContext, "닉네임 수정 완료!", Toast.LENGTH_SHORT).show()
-            } else if (newNickName.text.toString() == "" && orginalPassWord.text.toString() != "") {
+            } else if (newNickName.text.toString() == "" && orginalPassWord.text.toString() != "" && newPassWord.text.toString() != "" && newPassWordCheck.text.toString() != "") {
                 var oripwd = orginalPassWord.text.toString() // 현재 패스워드
                 var dbpwd = "" // db에서 가져온 패스워드
                 var newpwd = newPassWord.text.toString() //새로운 패스워드
