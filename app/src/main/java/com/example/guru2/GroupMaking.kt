@@ -40,6 +40,8 @@ class GroupMaking : AppCompatActivity() {
         btnGname = findViewById(R.id.btnGname)
         btnOk = findViewById(R.id.btnOk)
 
+        var userID = intent.getStringExtra("id").toString()
+
         // groupDB
         myHelper = myDBHelper(this)
         // personnelDB
@@ -93,9 +95,9 @@ class GroupMaking : AppCompatActivity() {
                 // 그룹 생성됨 메시지
                 Toast.makeText(applicationContext, "${edtName.text} 그룹이 생성되었습니다!", Toast.LENGTH_SHORT).show()
 
-
                 // 만들어졌으면 그룹 목록으로 화면 전환
                 val intent = Intent(this, GroupShow::class.java)
+                intent.putExtra("id", userID) // 유저 아이디 전달
                 startActivity(intent)
             } else {
                 // 그룹명 중복 아니지만 인원수 4 초과할 때
