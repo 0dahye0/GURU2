@@ -19,6 +19,7 @@ class InformationModiPage : AppCompatActivity()  {
     lateinit var newNickName : EditText //변경할 닉네임
     lateinit var newNickNameCheckBtn : Button //닉네임 중복 확인 버튼
 
+    lateinit var orginalPassWord:EditText//현재 패스워드
     lateinit var newPassWord : EditText //새로운 패스워드
     lateinit var newPassWordCheck : EditText //새로운 패스워드 재확인
     lateinit var ModiBtn : Button //수정하기 버튼
@@ -33,6 +34,7 @@ class InformationModiPage : AppCompatActivity()  {
         newNickName = findViewById(R.id.newNickName) //새로운 닉네임
         newNickNameCheckBtn = findViewById(R.id.newNickNameCheckBtn) //닉네임중복버튼
 
+        orginalPassWord = findViewById(R.id.orginalPassWord)//현재 패스워드
         newPassWord = findViewById(R.id.newPassWord) //새로운 패스워드
         newPassWordCheck = findViewById(R.id.newPassWordCheck) //새로운 패스워드 확인
 
@@ -68,19 +70,40 @@ class InformationModiPage : AppCompatActivity()  {
 
         //수정하기버튼 이벤트 처리
         ModiBtn.setOnClickListener {
-
+            var oripwd = orginalPassWord.text.toString()//현재 패스워드
+            var dbpwd=""//db에서 가져온 패스워드
             var newpwd = newPassWord.text.toString() //새로운 패스워드
             var newpwdch = newPassWordCheck.text.toString() //새로운 패스워드 확인
 
-            if(!newpwd.equals(newpwdch)){//비밀번호 입력과 비밀번호 확인 칸의 문자열이 동일하지 않을 때
-                Toast.makeText(applicationContext, "새로운 비밀번호 확인을 다시 해주세요.", Toast.LENGTH_SHORT).show()
+            //소속 팀 가져오기
+            sqlitedb = dbManager.readableDatabase
+            var sql = "SELECT pwd FROM personnel WHERE id = '" + id + "'"
+            var cursor: Cursor
+            cursor = sqlitedb.rawQuery(sql, null)
+            while (cursor.moveToNext()) {
+                dbpwd = cursor.getString(0)
             }
-            else{//기존 비밀번호, 새로운 비밀번호 동일
-                sqlitedb = dbManager.writableDatabase
-                sqlitedb.execSQL("UPDATE personnel SET pwd = '" + newPassWord.text +"' WHERE id = '" + id +"';")
-                Toast.makeText(applicationContext, "수정완료", Toast.LENGTH_SHORT).show()
 
+            if(cursor.getCount() != 0){//있을 때
+                if(!oripwd.equals(dbpwd)){//있는데 비밀번호가 안 맞음
+                    Toast.makeText(applicationContext, "기존 비밀번호가 틀렸습니다.", Toast.LENGTH_SHORT).show()
+                }
+                else{
+
+                    if(!newpwd.equals(newpwdch)){//비밀번호 입력과 비밀번호 확인 칸의 문자열이 동일하지 않을 때
+                        Toast.makeText(applicationContext, "새로운 비밀번호 확인을 다시 해주세요.", Toast.LENGTH_SHORT).show()
+                    }
+                    else{//기존 비밀번호, 새로운 비밀번호 동일
+                        sqlitedb = dbManager.writableDatabase
+                        sqlitedb.execSQL("UPDATE personnel SET pwd = '" + newPassWord.text +"' WHERE id = '" + id +"';")
+                        Toast.makeText(applicationContext, "수정완료", Toast.LENGTH_SHORT).show()
+                    }
+                }
             }
+            else {
+                Toast.makeText(applicationContext, "존재하지 않는 회원입니다", Toast.LENGTH_SHORT).show()
+            }
+
         }
 
         //이전 페이지로 돌아가기 버튼

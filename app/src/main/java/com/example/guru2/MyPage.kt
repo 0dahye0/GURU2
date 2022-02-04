@@ -109,7 +109,8 @@ class MyPage : AppCompatActivity() {
         informationmodiBtn.setOnClickListener {
 
             var intent = Intent(this, InformationModiPage::class.java)
-            intent.putExtra("id", personId.text.toString()) //인텐트로 id를 정보수정페이지로 넘김
+            //intent.putExtra("id", personId.text.toString()) //인텐트로 id를 정보수정페이지로 넘김
+            intent.putExtra("id", id) //인텐트로 id를 정보수정페이지로 넘김
             intent.putExtra("nick", personNickName.text.toString())//인텐트로 닉네임을 정보수정페이지로 넘김
             startActivity(intent)
         }
