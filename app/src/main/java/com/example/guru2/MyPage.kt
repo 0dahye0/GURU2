@@ -3,9 +3,11 @@
 package com.example.guru2
 
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.database.sqlite.SQLiteOpenHelper
 import android.net.Uri
 import android.os.Bundle
 import android.provider.MediaStore
@@ -20,6 +22,9 @@ class MyPage : AppCompatActivity() {
 
     lateinit var dbManager:DBManager
     lateinit var sqlitedb: SQLiteDatabase
+
+    lateinit var myHelper: myDBHelper
+    lateinit var sqlgDB: SQLiteDatabase
 
     lateinit var MyImage : ImageView //프로필 사진
     lateinit var MYImageChangeBtn : Button //프로필 사진 변경 버튼
@@ -53,10 +58,11 @@ class MyPage : AppCompatActivity() {
 
         dbManager = DBManager(this, "personnelDB", null, 1)
 
+        //변수설정
         var id = ""
         var nickNa = ""
         var walk=""
-        var team: String
+        var team=""
 
         //프로필 사진 변경버튼 이벤트 처리
         MYImageChangeBtn.setOnClickListener {
@@ -81,7 +87,23 @@ class MyPage : AppCompatActivity() {
         cursor.close()
         sqlitedb.close()
 
+
         //소속 팀 가져오기
+        myHelper = myDBHelper(this)
+        sqlgDB = myHelper.readableDatabase
+        var sql = "SELECT gName FROM groupDB WHERE gMember1 = '" + id + "'" + "OR gMember2 = '" + id + "'" + "OR gMember3= '" + id + "'"+
+                "OR gMember4 = '" + id +"'"
+        cursor = sqlgDB.rawQuery(sql, null)
+        while (cursor.moveToNext()) {
+            team = cursor.getString(0)
+        }
+
+        if(cursor.getCount() != 0){
+            personTeam.setText(team)//소속그룹있다면, 소속팀 세팅
+        }
+        else {
+            //소속그룹없다면, 아무런 결과 나타나지 않음
+        }
 
         //개인정보수정버튼 이벤트 처리
         informationmodiBtn.setOnClickListener {
@@ -117,6 +139,19 @@ class MyPage : AppCompatActivity() {
                     e.printStackTrace()
                 }
             }
+        }
+    }
+
+    inner class myDBHelper(context: Context) : SQLiteOpenHelper(context, "groupDB", null, 1) {
+        // 테이블 생성
+        override fun onCreate(db: SQLiteDatabase?) {
+            db!!.execSQL("CREATE TABLE groupDB (gName String, gNumber INTEGER, gText String, gStep String, gCount INTEGER, gMember1 String, gMember2 String, gMember3 String, gMember4 String);")
+        }
+
+        // 테이블 삭제 후 다시 생성
+        override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
+            db!!.execSQL("DROP TABLE IF EXISTS groupDB")
+            onCreate(db)
         }
     }
 
