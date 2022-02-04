@@ -10,6 +10,7 @@ import android.widget.Button
 import android.widget.ImageButton
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.core.view.marginTop
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class GroupShow : AppCompatActivity() {
@@ -48,7 +49,7 @@ class GroupShow : AppCompatActivity() {
 
             var layout_item: LinearLayout = LinearLayout(this)
             layout_item.orientation = LinearLayout.VERTICAL // 수직으로
-            layout_item.setPadding(20, 10, 20, 20) // 패딩 크기 설정
+            layout_item.setPadding(20, 20, 20, 20) // 패딩 크기 설정
             layout_item.id = num
             layout_item.setTag(str_gName)
 
