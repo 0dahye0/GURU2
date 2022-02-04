@@ -143,10 +143,10 @@
 
     <Button
         android:id="@+id/informationmodiBtn"
-        android:layout_width="350dp"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="#8EC9A4"
         android:text="개인정보수정"
@@ -160,9 +160,10 @@
 
     <Button
         android:id="@+id/logout"
-        android:layout_width="350dp"
+        android:layout_width="330dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
+        android:layout_marginTop="4dp"
         android:layout_marginEnd="32dp"
         android:backgroundTint="#8EC9A4"
         android:text="로그아웃"
@@ -170,6 +171,7 @@
         android:textStyle="bold"
         app:cornerRadius="8sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/informationmodiBtn" />
 
@@ -196,7 +198,7 @@
         android:text="프로필 사진 변경"
         android:textColor="#4C4C4C"
         android:textStyle="bold"
-        app:cornerRadius="10sp"
+        app:cornerRadius="8sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"

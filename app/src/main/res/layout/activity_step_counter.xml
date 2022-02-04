@@ -124,7 +124,7 @@
         android:text="오늘 하루도 힘차게 달려볼까요?"
         android:textAlignment="center"
         android:textColor="#606060"
-        android:textSize="18sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
