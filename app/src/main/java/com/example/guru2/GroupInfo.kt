@@ -1,6 +1,7 @@
 package com.example.guru2
 
 import android.content.Context
+import android.content.Intent
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
 import android.database.sqlite.SQLiteOpenHelper
@@ -29,7 +30,7 @@ class GroupInfo : AppCompatActivity() {
     var gCount: Int = 1 // 해당 그룹 현재 참여 중 인원수
     lateinit var str_gText: String // 해당 그룹 한 줄 소개
 
-    var id: String = ""
+    lateinit var id: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -77,18 +78,30 @@ class GroupInfo : AppCompatActivity() {
 
         // 참여하기 버튼을 눌렀을 때
         btnEnjoy.setOnClickListener {
-            sqlitedb = myHelper.writableDatabase // 읽고 쓰기 가능
+            sqlitedb = myHelper.writableDatabase // 읽고 쓰기 가능 (groupDB)
 
             // 멤버 업데이트
-            sqlDB = myHelper2.writableDatabase // 읽고 쓰기 가능
-            sqlDB.execSQL("UPDATE groupDB SET gMember${gCount+1} = '" + id + "' WHERE gName ='" + str_gName + "';")
-            gCount++ // 인원수 한 명 증가
+            sqlDB = myHelper2.writableDatabase // 읽고 쓰기 가능 (personnelDB)
+
+            var cursor: Cursor
+            cursor = sqlDB.rawQuery("SELECT id FROM personnel", null) // 디비에서 해당 로그인 아이디 가져오기
+
+            while (cursor.moveToNext()) {
+                id = cursor.getString(0) // id 가져오기
+            }
+
+            sqlitedb.execSQL("UPDATE groupDB SET gMember${gCount+1} = '" + id + "' WHERE gName ='" + str_gName + "';")
             sqlDB.close()
+            gCount++ // 인원수 한 명 증가
 
             // 현재 인원수 groupDB에 업데이트
             sqlitedb.execSQL("UPDATE groupDB SET gCount = " + gCount.toString() + " WHERE gName = '" + str_gName + "';")
             sqlitedb.close()
             Toast.makeText(applicationContext, "참여 완료!", Toast.LENGTH_SHORT).show()
+
+            // 메인 화면으로 전환
+            var intent = Intent(this, StepCounter::class.java)
+            startActivity(intent)
         }
     }
 
