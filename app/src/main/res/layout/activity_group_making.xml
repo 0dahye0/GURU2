@@ -6,6 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".GroupMaking">
 
+    <ImageView
+        android:id="@+id/background_group"
+        android:layout_width="459dp"
+        android:layout_height="491dp"
+        android:layout_marginTop="360dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background2" />
+
+    <ImageView
+        android:id="@+id/background2_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="428dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/background1" />
+
+    <ImageView
+        android:id="@+id/underline_group"
+        android:layout_width="145dp"
+        android:layout_height="22dp"
+        android:layout_marginStart="133dp"
+        android:layout_marginTop="56dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/underline" />
+
     <TextView
         android:id="@+id/tvGroupMake"
         android:layout_width="wrap_content"
@@ -25,7 +56,7 @@
         android:layout_height="38dp"
         android:layout_marginTop="148dp"
         android:ems="10"
-        android:background="@drawable/textbox"
+        android:background="@drawable/textbarstroke"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -36,50 +67,47 @@
         android:id="@+id/edtNumber"
         android:layout_width="250dp"
         android:layout_height="38dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginTop="37dp"
         android:background="@drawable/textbox"
         android:ems="10"
         android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/textView12"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.807"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtName" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginBottom="256dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="50dp"
         android:text="한 줄 소개"
         android:textColor="#474747"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
     <EditText
         android:id="@+id/edtTextBox"
         android:layout_width="250dp"
         android:layout_height="38dp"
-        android:layout_marginTop="40dp"
-        android:layout_marginBottom="160dp"
+        android:layout_marginTop="37dp"
         android:background="@drawable/textbox"
         android:ems="10"
         android:inputType="textPersonName"
-        app:layout_constraintBottom_toTopOf="@+id/btnOk"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.807"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtStep"
-        app:layout_constraintVertical_bias="0.769" />
+        app:layout_constraintTop_toBottomOf="@+id/edtStep" />
 
     <TextView
         android:id="@+id/textView12"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="50dp"
         android:text="목표 걸음수"
         android:textColor="#474747"
         android:textSize="18sp"
@@ -91,7 +119,7 @@
         android:id="@+id/edtStep"
         android:layout_width="250dp"
         android:layout_height="38dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="37dp"
         android:background="@drawable/textbox"
         android:ems="10"
         android:inputType="number"
@@ -104,8 +132,8 @@
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
-        android:layout_marginTop="224dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="50dp"
         android:layout_marginEnd="27dp"
         android:text="인원수"
         android:textColor="#474747"
@@ -114,37 +142,37 @@
         app:layout_constraintEnd_toStartOf="@+id/edtNumber"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
     <Button
         android:id="@+id/btnOk"
-        android:layout_width="312dp"
+        android:layout_width="350dp"
         android:layout_height="43dp"
-        android:layout_marginBottom="48dp"
+        android:layout_marginBottom="36dp"
         android:backgroundTint="#8EC9A4"
         android:insetTop="0dp"
         android:insetBottom="0dp"
         android:text="그룹 생성 완료"
-        android:textSize="11sp"
+        android:textSize="16sp"
         android:textStyle="bold"
         app:cornerRadius="11sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="156dp"
         android:text="그룹명"
         android:textColor="#474747"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/textView4"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/btnGname"
