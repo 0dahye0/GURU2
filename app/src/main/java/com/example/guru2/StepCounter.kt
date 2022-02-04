@@ -41,12 +41,12 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
         stopFab = findViewById(R.id.stopFab)
         groupBtn = findViewById(R.id.groupBtn)
         myPageBtn = findViewById(R.id.myPageBtn)
-        goal=findViewById(R.id.goal)
+        goal = findViewById(R.id.goal)
 
         // 유저 아이디 갖고 오기
         var userID = intent.getStringExtra("id").toString()
 
-        //목표칸에 들어갈 걸음 수
+        // 목표칸에 들어갈 걸음 수
         dbManager = DBManager(this, "personnelDB", null, 1)
         sqlitedb = dbManager.readableDatabase
 
@@ -57,16 +57,15 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
             walk = cursor.getString(0)
         }
 
-        if(cursor.getCount() != 0){
+        if(cursor.getCount() != 0) {
             goal.setText(walk + " 걸음")
+            progressBar.max = walk as Int
         }
-
-
 
         // play(pause) 버튼 클릭 이벤트
         playFab.setOnClickListener {
             if (!running) {
-                sensorManager = getSystemService(Context.SENSOR_SERVICE) as SensorManager
+                sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
                 onResume()
             }
             else {
