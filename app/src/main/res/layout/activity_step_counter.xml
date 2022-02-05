@@ -28,8 +28,6 @@
         android:progress="0"
         android:progressDrawable="@drawable/circle_progressbar"
         android:rotation="-90"
-        android:progressBackgroundTint="#9E9E9E"
-        android:progressTint="#9FE6A0"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
