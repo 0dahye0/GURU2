@@ -75,7 +75,7 @@ class GroupInfo : AppCompatActivity() {
         // 데이터 표기
         tvName.text = str_gName
         tvNumber.text ="$gCount / $gNumber"
-        tvStep.text = str_gStep
+        tvStep.text = "$str_gStep 걸음"
         tvText.text = str_gText + "\n"
 
         // 참여하기 버튼을 눌렀을 때

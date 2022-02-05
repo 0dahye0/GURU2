@@ -54,7 +54,7 @@ class MyPage : AppCompatActivity() {
         //새로운 닉네임을 인텐트로 받을 경우 이벤트처리
         var newnickname = intent.getStringExtra("nick")
         if(newnickname != null){
-            personNickName.setText(newnickname)
+            personNickName.text = newnickname
         }
 
         dbManager = DBManager(this, "personnelDB", null, 1)
@@ -68,7 +68,7 @@ class MyPage : AppCompatActivity() {
         //프로필 사진 변경버튼 이벤트 처리
         MYImageChangeBtn.setOnClickListener {
             val intent:Intent = Intent(Intent.ACTION_GET_CONTENT)
-            intent.setType("image/*")
+            intent.type = "image/*"
             startActivityForResult(intent, GALLERY)
         }
 
@@ -86,9 +86,9 @@ class MyPage : AppCompatActivity() {
             walk = cursor.getString((cursor.getColumnIndex("walk")))
         }
 
-        personId.setText(id) // 사용자 아이디로 세팅
-        personNickName.setText(nickNa) // 사용자 닉네임으로 세팅
-        personWalk.setText(walk + " 걸음") //목표 걸음 수 세팅
+        personId.text = id // 사용자 아이디로 세팅
+        personNickName.text = nickNa // 사용자 닉네임으로 세팅
+        personWalk.text = "$walk 걸음" //목표 걸음 수 세팅
 
         cursor.close()
         sqlitedb.close()
@@ -104,11 +104,11 @@ class MyPage : AppCompatActivity() {
             team = cursor.getString(0)
         }
 
-        if (cursor.getCount() != 0) {
-            personTeam.setText(team) // 소속 그룹 있다면, 소속팀 세팅
+        if (cursor.count != 0) {
+            personTeam.text = team // 소속 그룹 있다면, 소속팀 세팅
         }
         else {
-            personTeam.setText("그룹에 가입해 보세요!") //소속 그룹 없다면, 텍스트 표시
+            personTeam.text = "그룹에 가입해 보세요!" //소속 그룹 없다면, 텍스트 표시
         }
 
         // 개인 정보 수정버튼 이벤트 처리

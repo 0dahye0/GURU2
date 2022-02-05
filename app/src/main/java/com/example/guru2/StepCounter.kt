@@ -59,7 +59,7 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
         }
 
         // 목표 걸음수 텍스트 설정
-        goal.setText(walk + " 걸음")
+        goal.text = "$walk 걸음"
 
         // 프로그레스바 맥스 설정
         progressBar.max = walk.toInt()
