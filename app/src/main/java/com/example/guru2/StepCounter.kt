@@ -30,6 +30,7 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
     lateinit var sqlitedb: SQLiteDatabase
 
     private var currentStep = 0
+    lateinit var walk: String
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -51,16 +52,17 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
         sqlitedb = dbManager.readableDatabase
 
         var cursor: Cursor
-        cursor = sqlitedb.rawQuery("SELECT walk FROM personnel", null) // 디비에서 걸음수 가져오기
-        var walk = ""
+        cursor = sqlitedb.rawQuery("SELECT * FROM personnel WHERE id = '" + userID + "';", null) // 디비에서 걸음수 가져오기
+
         while (cursor.moveToNext()) {
-            walk = cursor.getString(0)
+            walk = cursor.getString((cursor.getColumnIndex("walk")))
         }
 
-        if(cursor.getCount() != 0) {
-            goal.setText(walk + " 걸음")
-            progressBar.max = walk.toInt()
-        }
+        // 목표 걸음수 텍스트 설정
+        goal.setText(walk + " 걸음")
+
+        // 프로그레스바 맥스 설정
+        progressBar.max = walk.toInt()
 
         // play(pause) 버튼 클릭 이벤트
         playFab.setOnClickListener {

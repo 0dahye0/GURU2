@@ -88,7 +88,7 @@ class MyPage : AppCompatActivity() {
 
         personId.setText(id) // 사용자 아이디로 세팅
         personNickName.setText(nickNa) // 사용자 닉네임으로 세팅
-        personWalk.setText(walk) //목표 걸음 수 세팅
+        personWalk.setText(walk + " 걸음") //목표 걸음 수 세팅
 
         cursor.close()
         sqlitedb.close()

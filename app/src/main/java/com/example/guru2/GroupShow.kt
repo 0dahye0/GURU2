@@ -56,7 +56,7 @@ class GroupShow : AppCompatActivity() {
             // 그룹 이름 보여 주기
             var tvName: TextView = TextView(this)
             tvName.text = str_gName
-            tvName.textSize = 27F
+            tvName.textSize = 25F
             tvName.setBackgroundColor(Color.parseColor("#8EC9A4"))
             layout_item.addView(tvName)
 
