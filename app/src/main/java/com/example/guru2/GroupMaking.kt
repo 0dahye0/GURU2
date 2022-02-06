@@ -58,7 +58,7 @@ class GroupMaking : AppCompatActivity() {
             cursor = sqlgDB.rawQuery(name, null)
 
             // 해당 이름이 데이터 테이블에 있는지 확인
-            if(cursor.getCount() != 0){
+            if(cursor.getCount() != 0) {
                 available = false // 사용 불가능 (중복)
                 Toast.makeText(applicationContext, "존재하는 그룹명입니다!", Toast.LENGTH_SHORT).show()
             }

@@ -16,7 +16,6 @@ class GroupInfo : AppCompatActivity() {
     // groupDB 테이블을 사용하기 위해서
     lateinit var dbManager: DBManager
     lateinit var sqlitedb: SQLiteDatabase // groupDB에 사용
-    lateinit var sqlDB: SQLiteDatabase // personnelDB에 사용
 
     lateinit var tvName: TextView // 그룹명
     lateinit var tvNumber: TextView // 그룹 인원수
@@ -47,7 +46,6 @@ class GroupInfo : AppCompatActivity() {
 
         // helper 선언
         var myHelper: myDBHelper = myDBHelper(this)
-        var myHelper2: myDBHelper2 = myDBHelper2(this)
 
         // 리스트에서 선택한 그룹의 이름을 가져오기
         val intent = intent
@@ -83,7 +81,6 @@ class GroupInfo : AppCompatActivity() {
             // 그룹 인원 체크
             if (gNumber > gCount) {
                 sqlitedb = myHelper.writableDatabase // 읽고 쓰기 가능 (groupDB)
-                sqlDB = myHelper2.writableDatabase // 읽고 쓰기 가능 (personnelDB)
 
                 var sql = "SELECT gName FROM groupDB WHERE gMember1 = '" + userID + "'" + "OR gMember2 = '" + userID + "'" + "OR gMember3 = '" + userID + "'" +
                           "OR gMember4 = '" + userID + "'"
@@ -92,7 +89,6 @@ class GroupInfo : AppCompatActivity() {
                 // 참여 중인 그룹이 없는지 체크
                 if (cursor.getCount() == 0) {
                     sqlitedb.execSQL("UPDATE groupDB SET gMember${gCount+1} = '" + userID + "' WHERE gName ='" + str_gName + "';")
-                    sqlDB.close()
                     gCount++ // 인원수 한 명 증가
 
                     // 현재 인원수 groupDB에 업데이트
@@ -113,31 +109,6 @@ class GroupInfo : AppCompatActivity() {
             else {
                 Toast.makeText(applicationContext, "정원 초과로 참여할 수 없습니다!", Toast.LENGTH_SHORT).show()
             }
-
-            /*
-            var cursor: Cursor
-
-            cursor = sqlitedb.rawQuery("SELECT * FROM personnel WHERE id = '" + userID + "';", null)
-            cursor = sqlDB.rawQuery("SELECT id FROM personnel", null) // 디비에서 해당 로그인 아이디 가져오기
-
-            while (cursor.moveToNext()) {
-                id = cursor.getString(0) // id 가져오기
-            }
-
-            sqlitedb.execSQL("UPDATE groupDB SET gMember${gCount+1} = '" + userID + "' WHERE gName ='" + str_gName + "';")
-            sqlDB.close()
-            gCount++ // 인원수 한 명 증가
-
-            // 현재 인원수 groupDB에 업데이트
-            sqlitedb.execSQL("UPDATE groupDB SET gCount = " + gCount.toString() + " WHERE gName = '" + str_gName + "';")
-            sqlitedb.close()
-            Toast.makeText(applicationContext, "참여 완료!", Toast.LENGTH_SHORT).show()
-
-            // 메인 화면으로 전환
-            var intent = Intent(this, StepCounter::class.java)
-            intent.putExtra("id", userID)
-            startActivity(intent)
-            */
         }
     }
 
@@ -151,18 +122,6 @@ class GroupInfo : AppCompatActivity() {
         // 테이블 삭제 후 다시 생성
         override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
             db!!.execSQL("DROP TABLE IF EXISTS groupDB")
-            onCreate(db)
-        }
-    }
-
-    // personnelDB
-    inner class myDBHelper2(context: Context) : SQLiteOpenHelper(context, "personnelDB", null, 1) {
-        override fun onCreate(db: SQLiteDatabase?) {
-            db!!.execSQL("CREATE TABLE personnel (id text, pwd text, nickname text)")
-        }
-
-        override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-            db!!.execSQL("DROP TABLE IF EXISTS personnelDB")
             onCreate(db)
         }
     }
