@@ -39,9 +39,10 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
     lateinit var myHelper: myDBHelper
     lateinit var sqlgDB: SQLiteDatabase
 
-    private var currentStep = 0
+    private var currentStep = 0 // 현재 걸음 수
+    private var myStep = 0 // 걸음수 저장
     private var percent = 0.0
-    lateinit var walk: String // 현재 유저의 걸음수
+    lateinit var walk: String // 유저의 목표 걸음 수
     lateinit var step: String // 팀 목표 걸음 수
     lateinit var team: String // 팀 이름
 
@@ -112,6 +113,7 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
         playFab.setOnClickListener {
             if (!running) {
                 sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
+                tvPercent.text = "$percent%"
                 onResume()
             }
             else {
@@ -124,7 +126,6 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
             sensorManager?.unregisterListener(this)
             progressBar.setProgress(0, true)
             stepsValue.text = "0"
-            tvPercent.text = "0%"
             currentStep = 0
             playFab.setImageResource(R.drawable.ic_baseline_play_circle_24)
         }
@@ -158,6 +159,8 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
             running = true
             if (currentStep != 0) {
                 currentStep--
+            } else if (myStep != 0) {
+                myStep--
             }
             sensorManager?.registerListener(this, stepsSensor, SensorManager.SENSOR_DELAY_UI)
             playFab.setImageResource(R.drawable.ic_baseline_pause_circle_24)
@@ -176,10 +179,11 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
     override fun onSensorChanged(p0: SensorEvent?) {
         if (running) {
             progressBar.setProgress(currentStep, true) // 내 걸음수
-            progressBar2.setProgress(currentStep, true) // 기여도
+            progressBar2.setProgress(myStep, true) // 기여도
             stepsValue.text = currentStep.toString()
-            percent = currentStep * 100 / step.toDouble()
+            percent = myStep * 100 / step.toDouble() // 퍼센트 계산
             tvPercent.text = "$percent%" // 백분율 계산해서 보여주기
+            myStep++ // 걸음수 계속해서 저장
             currentStep++
         }
     }
