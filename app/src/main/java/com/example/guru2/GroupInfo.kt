@@ -87,9 +87,9 @@ class GroupInfo : AppCompatActivity() {
 
                 var sql = "SELECT gName FROM groupDB WHERE gMember1 = '" + userID + "'" + "OR gMember2 = '" + userID + "'" + "OR gMember3 = '" + userID + "'" +
                           "OR gMember4 = '" + userID + "'"
-                cursor = sqlDB.rawQuery(sql, null)
+                cursor = sqlitedb.rawQuery(sql, null)
 
-                // 참여하지 않은 그룹인지 체크
+                // 참여 중인 그룹이 없는지 체크
                 if (cursor.getCount() == 0) {
                     sqlitedb.execSQL("UPDATE groupDB SET gMember${gCount+1} = '" + userID + "' WHERE gName ='" + str_gName + "';")
                     sqlDB.close()
@@ -105,9 +105,9 @@ class GroupInfo : AppCompatActivity() {
                     intent.putExtra("id", userID)
                     startActivity(intent)
                 }
-                // 이미 참여 중인 그룹이라면 Toast 메시지 띄우기
+                // 이미 참여 중인 그룹이 있다면 Toast 메시지 띄우기
                 else {
-                    Toast.makeText(applicationContext, "이미 참여 중인 그룹입니다!", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "이미 참여 중인 그룹이 존재합니다!", Toast.LENGTH_SHORT).show()
                 }
             }
             else {

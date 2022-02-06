@@ -77,9 +77,9 @@ class GroupMaking : AppCompatActivity() {
                         edtNumber.text.toString() + ", '" + edtTextBox.text.toString() + "', '" + edtStep.text.toString() + "', " + 1.toString() + ", ' ', ' ', ' ', ' ');")
 
                 // 만든 사람 그룹 멤버로 추가하기
-                sqlDB = myHelper2.readableDatabase
+                sqlgDB = myHelper2.readableDatabase
                 var cursor: Cursor
-                cursor = sqlDB.rawQuery("SELECT id FROM personnel", null) // 디비에서 해당 로그인 아이디 가져오기
+                cursor = sqlgDB.rawQuery("SELECT id FROM personnel", null) // 디비에서 해당 로그인 아이디 가져오기
 
                 while (cursor.moveToNext()) {
                     id = cursor.getString(0) // id 가져오기
