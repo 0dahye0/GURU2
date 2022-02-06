@@ -44,7 +44,6 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
     private var percent = 0.0
     lateinit var walk: String // 유저의 목표 걸음 수
     lateinit var step: String // 팀 목표 걸음 수
-    lateinit var team: String // 팀 이름
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -60,6 +59,8 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
         progressBar2 = findViewById(R.id.progressBar2)
         teamStep = findViewById(R.id.teamStep)
         tvPercent = findViewById(R.id.tvPercent)
+
+        var team: String = "" // 팀 이름
 
         // 유저 아이디 갖고 오기
         var userID = intent.getStringExtra("id").toString()
@@ -83,16 +84,14 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
         sqlgDB = myHelper.readableDatabase
 
         // 유저의 그룹 가져오기
-        var sql = "SELECT gName FROM groupDB WHERE gMember1 = '" + userID + "'" + " OR gMember2 = '" + userID + "'" + " OR gMember3= '" + userID + "'"+
-                " OR gMember4 = '" + userID +"'"
-
-        cursor = sqlgDB.rawQuery(sql, null)
+        cursor = sqlgDB.rawQuery("SELECT * FROM groupDB WHERE gMember1 = '" + userID + "'" + " OR gMember2 = '" + userID + "'" + " OR gMember3= '" + userID + "'"+
+                " OR gMember4 = '" + userID +"'", null)
 
         while (cursor.moveToNext()) {
-            team = cursor.getString(0)
+            team = cursor.getString((cursor.getColumnIndex("gName")))
         }
 
-        cursor = sqlgDB.rawQuery("SELECT * FROM groupDB WHERE gName = '" + team + "';", null)
+        cursor = sqlgDB.rawQuery("SELECT * FROM groupDB WHERE gName = '$team';", null)
 
         while (cursor.moveToNext()) {
             step = cursor.getString((cursor.getColumnIndex("gStep")))
