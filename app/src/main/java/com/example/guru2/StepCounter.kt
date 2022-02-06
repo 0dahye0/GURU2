@@ -100,6 +100,7 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
 
         if (cursor.count != 0) {
             teamStep.text = "$step 걸음" // 소속 그룹 있다면, 프로그레스바에 팀 목표 걸음 수 세팅
+            progressBar2.max = step.toInt()
         }
         else {
             teamStep.text = "그룹에 가입해 보세요!" // 소속 그룹이 현재 없다면, 텍스트 표시
@@ -107,7 +108,6 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
 
         // 프로그레스바 맥스 설정
         progressBar.max = walk.toInt()
-        progressBar2.max = step.toInt()
 
         // play(pause) 버튼 클릭 이벤트
         playFab.setOnClickListener {
