@@ -68,7 +68,7 @@ class GroupInfo : AppCompatActivity() {
             gCount = cursor.getInt((cursor.getColumnIndex("gCount")))
         }
 
-        cursor.close()
+        // cursor.close()
         sqlitedb.close()
         dbManager.close()
 
@@ -80,24 +80,17 @@ class GroupInfo : AppCompatActivity() {
 
         // 참여하기 버튼을 눌렀을 때
         btnEnjoy.setOnClickListener {
-            /*
-            sqlitedb = myHelper.writableDatabase // 읽고 쓰기 가능 (groupDB)
-
-            // 멤버 업데이트
-            sqlDB = myHelper2.writableDatabase // 읽고 쓰기 가능 (personnelDB)
-             */
-
             // 그룹 인원 체크
             if (gNumber > gCount) {
                 sqlitedb = myHelper.writableDatabase // 읽고 쓰기 가능 (groupDB)
                 sqlDB = myHelper2.writableDatabase // 읽고 쓰기 가능 (personnelDB)
 
-                var sql = "SELECT gName FROM groupDB WHERE gMember1 = '" + id + "'" + "OR gMember2 = '" + id + "'" + "OR gMember3 = '" + id + "'"+
-                        "OR gMember4 = '" + id + "'"
+                var sql = "SELECT gName FROM groupDB WHERE gMember1 = '" + userID + "'" + "OR gMember2 = '" + userID + "'" + "OR gMember3 = '" + userID + "'" +
+                          "OR gMember4 = '" + userID + "'"
                 cursor = sqlDB.rawQuery(sql, null)
 
                 // 참여하지 않은 그룹인지 체크
-                if (cursor.count == 0) {
+                if (cursor.getCount() == 0) {
                     sqlitedb.execSQL("UPDATE groupDB SET gMember${gCount+1} = '" + userID + "' WHERE gName ='" + str_gName + "';")
                     sqlDB.close()
                     gCount++ // 인원수 한 명 증가

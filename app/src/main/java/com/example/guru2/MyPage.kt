@@ -97,8 +97,8 @@ class MyPage : AppCompatActivity() {
         // 소속 팀 가져오기
         myHelper = myDBHelper(this)
         sqlgDB = myHelper.readableDatabase
-        var sql = "SELECT gName FROM groupDB WHERE gMember1 = '" + id + "'" + "OR gMember2 = '" + id + "'" + "OR gMember3 = '" + id + "'"+
-                "OR gMember4 = '" + id + "'"
+        var sql = "SELECT gName FROM groupDB WHERE gMember1 = '" + id + "'" + "OR gMember2 = '" + id + "'" + "OR gMember3 = '" + id + "'" +
+                  "OR gMember4 = '" + id + "'"
         cursor = sqlgDB.rawQuery(sql, null)
         while (cursor.moveToNext()) {
             team = cursor.getString(0)
