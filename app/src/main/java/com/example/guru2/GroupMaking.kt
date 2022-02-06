@@ -13,16 +13,14 @@ import android.widget.Toast
 
 class GroupMaking : AppCompatActivity() {
 
-    lateinit var myHelper: myDBHelper
-    lateinit var myHelper2: myDBHelper2
+    lateinit var myHelper: myDBHelper // groupDB 헬퍼
     lateinit var edtName: EditText
     lateinit var btnGname: Button
     lateinit var edtNumber: EditText
     lateinit var edtStep: EditText
     lateinit var edtTextBox: EditText
     lateinit var btnOk: Button
-    lateinit var sqlgDB: SQLiteDatabase
-    lateinit var sqlDB: SQLiteDatabase
+    lateinit var sqlgDB: SQLiteDatabase // groupDB
 
     lateinit var name: String
     lateinit var id: String
@@ -44,8 +42,6 @@ class GroupMaking : AppCompatActivity() {
 
         // groupDB
         myHelper = myDBHelper(this)
-        // personnelDB
-        myHelper2 = myDBHelper2(this)
 
         // 그룹명 중복확인
         btnGname.setOnClickListener {
@@ -71,25 +67,13 @@ class GroupMaking : AppCompatActivity() {
         btnOk.setOnClickListener {
             // 인원수가 4 이하이고 그룹명 중복 아닐 때
             if (edtNumber.text.toString().toInt() <= 4 && available) {
-                sqlgDB = myHelper.writableDatabase
+                sqlgDB = myHelper.writableDatabase // groupDB
                 // 그룹 생성하기
                 sqlgDB.execSQL("INSERT INTO groupDB VALUES ('" + edtName.text.toString() + "', " +
                         edtNumber.text.toString() + ", '" + edtTextBox.text.toString() + "', '" + edtStep.text.toString() + "', " + 1.toString() + ", ' ', ' ', ' ', ' ');")
 
                 // 만든 사람 그룹 멤버로 추가하기
-                sqlgDB = myHelper2.readableDatabase
-                var cursor: Cursor
-                cursor = sqlgDB.rawQuery("SELECT id FROM personnel", null) // 디비에서 해당 로그인 아이디 가져오기
-
-                while (cursor.moveToNext()) {
-                    id = cursor.getString(0) // id 가져오기
-                }
-
-                // gMember1로 그룹을 생성한 아이디 추가하기
-                sqlgDB.execSQL("UPDATE groupDB SET gMember1 = '" + id + "' WHERE gName = '" + edtName.text.toString() + "';")
-
-                cursor.close()
-                sqlDB.close()
+                sqlgDB.execSQL("UPDATE groupDB SET gMember1 = '" + userID + "' WHERE gName = '" + edtName.text.toString() + "';")
                 sqlgDB.close()
 
                 // 그룹 생성됨 메시지
@@ -122,18 +106,6 @@ class GroupMaking : AppCompatActivity() {
         // 테이블 삭제 후 다시 생성
         override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
             db!!.execSQL("DROP TABLE IF EXISTS groupDB")
-            onCreate(db)
-        }
-    }
-
-    // personnelDB
-    inner class myDBHelper2(context: Context) : SQLiteOpenHelper(context, "personnelDB", null, 1) {
-        override fun onCreate(db: SQLiteDatabase?) {
-            db!!.execSQL("CREATE TABLE personnel (id text, pwd text, nickname text)")
-        }
-
-        override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
-            db!!.execSQL("DROP TABLE IF EXISTS personnelDB")
             onCreate(db)
         }
     }

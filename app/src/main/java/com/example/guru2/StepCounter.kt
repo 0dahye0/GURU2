@@ -26,7 +26,7 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
     private lateinit var stopFab: FloatingActionButton
     private lateinit var groupBtn: ImageButton
     private lateinit var myPageBtn: ImageButton
-    private lateinit var goal : TextView
+    private lateinit var goal: TextView
     private lateinit var progressBar2: ProgressBar
     private lateinit var teamStep: TextView
     private lateinit var tvPercent: TextView
@@ -84,8 +84,8 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
         sqlgDB = myHelper.readableDatabase
 
         // 유저의 그룹 가져오기
-        cursor = sqlgDB.rawQuery("SELECT * FROM groupDB WHERE gMember1 = '" + userID + "'" + " OR gMember2 = '" + userID + "'" + " OR gMember3= '" + userID + "'"+
-                " OR gMember4 = '" + userID +"'", null)
+        cursor = sqlgDB.rawQuery("SELECT * FROM groupDB WHERE gMember1 = '" + userID + "'" + " OR gMember2 = '" + userID + "'" + " OR gMember3= '" + userID + "'" +
+                " OR gMember4 = '" + userID + "'", null)
 
         while (cursor.moveToNext()) {
             team = cursor.getString((cursor.getColumnIndex("gName")))
@@ -100,8 +100,7 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
         if (cursor.count != 0) {
             teamStep.text = "$step 걸음" // 소속 그룹 있다면, 프로그레스바에 팀 목표 걸음 수 세팅
             progressBar2.max = step.toInt()
-        }
-        else {
+        } else {
             teamStep.text = "그룹에 가입해 보세요!" // 소속 그룹이 현재 없다면, 텍스트 표시
         }
 
@@ -114,8 +113,7 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
                 sensorManager = getSystemService(SENSOR_SERVICE) as SensorManager
                 tvPercent.text = "$percent%"
                 onResume()
-            }
-            else {
+            } else {
                 onPause()
             }
         }
@@ -153,8 +151,7 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
             if (running) {
                 Toast.makeText(this, "No Step Counter Sensor!", Toast.LENGTH_SHORT).show()
             }
-        }
-        else {
+        } else {
             running = true
             if (currentStep != 0) {
                 currentStep--
