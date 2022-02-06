@@ -73,7 +73,7 @@ class StepCounter : AppCompatActivity(), SensorEventListener {
         cursor = sqlitedb.rawQuery("SELECT * FROM personnel WHERE id = '$userID';", null) // 디비에서 걸음수 가져오기
 
         while (cursor.moveToNext()) {
-            walk = cursor.getString(cursor.getColumnIndex("walk"))
+            walk = cursor.getString((cursor.getColumnIndex("walk")))
         }
 
         // 목표 걸음수 텍스트 설정
