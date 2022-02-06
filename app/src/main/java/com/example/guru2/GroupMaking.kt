@@ -106,7 +106,7 @@ class GroupMaking : AppCompatActivity() {
                 }
                 // 인원수가 4 이하이지만 그룹명이 중복일 때
                 else if (edtNumber.text.toString().toInt() <= 4 && !available) {
-                    Toast.makeText(applicationContext, "그룹명을 바꿔 주세요.", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(applicationContext, "그룹명을 바꿔 주세요!", Toast.LENGTH_SHORT).show()
                 }
             }
         }

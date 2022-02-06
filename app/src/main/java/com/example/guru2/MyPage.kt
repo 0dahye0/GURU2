@@ -97,8 +97,8 @@ class MyPage : AppCompatActivity() {
         // 소속 팀 가져오기
         myHelper = myDBHelper(this)
         sqlgDB = myHelper.readableDatabase
-        var sql = "SELECT gName FROM groupDB WHERE gMember1 = '" + id + "'" + "OR gMember2 = '" + id + "'" + "OR gMember3= '" + id + "'"+
-                "OR gMember4 = '" + id +"'"
+        var sql = "SELECT gName FROM groupDB WHERE gMember1 = '" + id + "'" + "OR gMember2 = '" + id + "'" + "OR gMember3 = '" + id + "'"+
+                "OR gMember4 = '" + id + "'"
         cursor = sqlgDB.rawQuery(sql, null)
         while (cursor.moveToNext()) {
             team = cursor.getString(0)
@@ -122,7 +122,7 @@ class MyPage : AppCompatActivity() {
         }
 
         //로그아웃 버튼 이벤트 처리
-        logout.setOnClickListener {//로그아웃되어 메인페이지로 돌아감
+        logout.setOnClickListener { //로그아웃되어 메인페이지로 돌아감
             var intent = Intent(this, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TOP
             startActivity(intent)

@@ -80,19 +80,56 @@ class GroupInfo : AppCompatActivity() {
 
         // 참여하기 버튼을 눌렀을 때
         btnEnjoy.setOnClickListener {
+            /*
             sqlitedb = myHelper.writableDatabase // 읽고 쓰기 가능 (groupDB)
 
             // 멤버 업데이트
             sqlDB = myHelper2.writableDatabase // 읽고 쓰기 가능 (personnelDB)
+             */
 
-            /*var cursor: Cursor
+            // 그룹 인원 체크
+            if (gNumber > gCount) {
+                sqlitedb = myHelper.writableDatabase // 읽고 쓰기 가능 (groupDB)
+                sqlDB = myHelper2.writableDatabase // 읽고 쓰기 가능 (personnelDB)
+
+                var sql = "SELECT gName FROM groupDB WHERE gMember1 = '" + id + "'" + "OR gMember2 = '" + id + "'" + "OR gMember3 = '" + id + "'"+
+                        "OR gMember4 = '" + id + "'"
+                cursor = sqlDB.rawQuery(sql, null)
+
+                // 참여하지 않은 그룹인지 체크
+                if (cursor.count == 0) {
+                    sqlitedb.execSQL("UPDATE groupDB SET gMember${gCount+1} = '" + userID + "' WHERE gName ='" + str_gName + "';")
+                    sqlDB.close()
+                    gCount++ // 인원수 한 명 증가
+
+                    // 현재 인원수 groupDB에 업데이트
+                    sqlitedb.execSQL("UPDATE groupDB SET gCount = " + gCount.toString() + " WHERE gName = '" + str_gName + "';")
+                    sqlitedb.close()
+                    Toast.makeText(applicationContext, "참여 완료!", Toast.LENGTH_SHORT).show()
+
+                    // 메인 화면으로 전환
+                    var intent = Intent(this, StepCounter::class.java)
+                    intent.putExtra("id", userID)
+                    startActivity(intent)
+                }
+                // 이미 참여 중인 그룹이라면 Toast 메시지 띄우기
+                else {
+                    Toast.makeText(applicationContext, "이미 참여 중인 그룹입니다!", Toast.LENGTH_SHORT).show()
+                }
+            }
+            else {
+                Toast.makeText(applicationContext, "정원 초과로 참여할 수 없습니다!", Toast.LENGTH_SHORT).show()
+            }
+
+            /*
+            var cursor: Cursor
 
             cursor = sqlitedb.rawQuery("SELECT * FROM personnel WHERE id = '" + userID + "';", null)
             cursor = sqlDB.rawQuery("SELECT id FROM personnel", null) // 디비에서 해당 로그인 아이디 가져오기
 
             while (cursor.moveToNext()) {
                 id = cursor.getString(0) // id 가져오기
-            }*/
+            }
 
             sqlitedb.execSQL("UPDATE groupDB SET gMember${gCount+1} = '" + userID + "' WHERE gName ='" + str_gName + "';")
             sqlDB.close()
@@ -107,6 +144,7 @@ class GroupInfo : AppCompatActivity() {
             var intent = Intent(this, StepCounter::class.java)
             intent.putExtra("id", userID)
             startActivity(intent)
+            */
         }
     }
 
